@@ -1,3 +1,5 @@
 @forward './all-themes' as all-* show all-themes;
+@forward './app-theme' as app-* show app-theme;
 @forward './checkbox-theme' as checkbox-* show checkbox-theme;
+@forward './radio-button-theme' as radio-button-* show radio-button-theme;
 @forward './selection-control-theme' as selection-control-* show selection-control-theme;

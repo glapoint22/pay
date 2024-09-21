@@ -9,7 +9,7 @@
 }
 
 
-@mixin theme-variables($theme, $component, $configs) {
+@mixin theme-variables($theme, $configs) {
     @each $config in $configs {
         $variable-name: map.get($config, 'variable-name');
         --#{$variable-name}: #{get-color(map.get($theme, palette), $config)};

@@ -1,0 +1,8 @@
+@use './utility';
+
+@mixin theme($theme) {
+    @include utility.theme-variables($theme, (
+        (variable-name: 'background-color', color-key: 100),
+        (variable-name: 'text-color', color-key: 15)
+    ));
+}
