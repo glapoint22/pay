@@ -1,0 +1,17 @@
+@use 'sass:map';
+
+@function get-color($palette, $config) {
+    $color-key: map.get($config, 'color-key');
+    $opacity: if(map.has-key($config, 'opacity'), map.get($config, 'opacity'), null);
+    $color: map.get($palette, $color-key);
+
+    @return if($opacity, rgba($color, $opacity), $color);
+}
+
+
+@mixin theme-variables($theme, $component, $configs) {
+    @each $config in $configs {
+        $variable-name: map.get($config, 'variable-name');
+        --#{$variable-name}: #{get-color(map.get($theme, palette), $config)};
+    }
+}

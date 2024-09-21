@@ -1,0 +1,9 @@
+@use './' as themes;
+@use './palettes' as palettes;
+
+$light-theme: (
+    theme-name: light-theme,
+    palette: palettes.$light-palette
+);
+
+@include themes.all-themes($light-theme);

@@ -1,0 +1,8 @@
+@use './utility';
+
+@mixin theme($theme) {
+    @include utility.theme-variables($theme, 'checkbox', (
+        (variable-name: 'checkbox-selected-color', color-key: 40),
+        (variable-name: 'checkbox-selected-checkmark-color', color-key: 100)
+    ));
+}

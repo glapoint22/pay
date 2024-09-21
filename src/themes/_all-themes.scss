@@ -1,0 +1,11 @@
+@use 'sass:map';
+@use './selection-control-theme' as selection-control;
+@use './checkbox-theme' as checkbox;
+
+
+@mixin themes($theme) {
+    .#{map.get($theme, theme-name)} {
+        @include selection-control.theme($theme);
+        @include checkbox.theme($theme);
+    }
+}
