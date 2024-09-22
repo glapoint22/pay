@@ -2,7 +2,7 @@ import { Component, contentChildren, forwardRef, input } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { RadioButtonComponent } from '../radio-button/radio-button.component';
 import { CommonModule } from '@angular/common';
-import { LayoutType } from '../../types/layout';
+import { LayoutType } from '../types/layout';
 
 @Component({
   selector: 'radio-group',

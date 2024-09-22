@@ -1,0 +1,101 @@
+.header {
+    position: fixed;
+    height: 78px;
+    width: 100%;
+    background: linear-gradient(90deg, #082D4D 0%, #041727 100%);
+    display: flex;
+    align-items: center;
+    padding: 0 40px;
+    justify-content: space-between;
+    z-index: 1000;
+}
+
+.branding {
+    display: flex;
+}
+
+.smi-logo {
+    width: 108px;
+    height: 48px;
+}
+
+.site-name {
+    height: 43px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-left: 15px;
+}
+
+.smi-pay {
+    font-family: "Source Serif Pro";
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: left;
+    color: #ffffff;
+}
+
+.payment-platform {
+    font-family: Inter;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 14px;
+    text-align: left;
+    color: #94CBE4;
+}
+
+
+.header-nav {
+    width: 107px;
+    height: 34px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.notifications {
+    width: 23px;
+    height: 27px;
+    display: flex;
+}
+
+.bell-icon {
+    margin-top: 6px;
+    flex-shrink: 0;
+}
+
+.circle {
+    width: 8px;
+    height: 8px;
+    background: #0EFDB8;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.avatar {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: #61798D;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+@media (max-width: 600px) {
+    .header {
+        height: 145px;
+    }
+
+    .branding {
+        flex-direction: column;
+        justify-content: space-between;
+        height: 110px;
+    }
+
+    .site-name {
+        margin-left: 0;
+    }
+}
