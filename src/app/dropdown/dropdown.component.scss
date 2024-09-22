@@ -1,0 +1,32 @@
+:host {
+    display: block;
+    width: 100%;
+}
+
+.dropdown {
+    display: inline-flex;
+    align-items: center;
+    width: 100%;
+}
+
+.dropdown-text {
+    width: 100%;
+    color: var(--dropdown-text);
+}
+
+.dropdown-list {
+    width: 100%;
+    border: 1px solid var(--dropdown-list-border);
+    background: var(--dropdown-list-background);
+    max-height: 272px;
+    overflow: auto;
+    box-shadow: 3px 3px 7px 1px rgba(0, 0, 0, 0.14);
+}
+
+.dropdown-disabled {
+    .dropdown-text {
+        color: var(--dropdown-disabled-text);
+    }
+
+    fill: var(--dropdown-disabled-arrow);
+}

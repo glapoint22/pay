@@ -1,0 +1,15 @@
+@use './utility';
+
+@mixin theme($theme) {
+    @include utility.theme-variables($theme, (
+        (variable-name: 'dropdown-text', color-key: 15),
+        (variable-name: 'dropdown-disabled-text', color-key: 0, opacity: 0.38),
+        (variable-name: 'dropdown-arrow', color-key: 30),
+        (variable-name: 'dropdown-disabled-arrow', color-key: 0, opacity: 0.2),
+        (variable-name: 'dropdown-item-hover', color-key: 0, opacity: 0.02),
+        (variable-name: 'dropdown-item-selected', color-key: 30),
+        (variable-name: 'dropdown-item-selected-text', color-key: 1000),
+        (variable-name: 'dropdown-list-background', color-key: 1000),
+        (variable-name: 'dropdown-list-border', color-key: 95)
+    ));
+}

@@ -11,15 +11,12 @@
     margin-bottom: 40px;
 }
 
-.admin-section {
-    margin-bottom: 10px;
-}
-
 .section-label {
     font-size: 12px;
     font-weight: 500;
     text-align: left;
     color: var(--sidebar-section-label);
+    margin-bottom: 10px;
 }
 
 nav {
@@ -46,10 +43,19 @@ nav {
     text-align: left;
     color: var(--sidebar-nav-item-text);
     margin-left: 10px;
+    font-weight: 600;
 }
 
 a {
     text-decoration: none;
+
+    &:focus {
+        outline: none;
+
+        &:not(.active-link) {
+            background-color: var(--sidebar-nav-focused);
+        }
+    }
 }
 
 .active-link {
@@ -59,6 +65,6 @@ a {
 
     .nav-text {
         color: var(--sidebar-nav-item-selected-text);
-        font-weight: 600;
+        // font-weight: 600;
     }
 }

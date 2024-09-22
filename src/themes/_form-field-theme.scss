@@ -1,0 +1,13 @@
+@use './utility';
+
+@mixin theme($theme) {
+    @include utility.theme-variables($theme, (
+        (variable-name: 'form-field-background', color-key: 1000),
+        (variable-name: 'form-field-border', color-key: 95),
+        (variable-name: 'form-field-selected-border', color-key: 30),
+        (variable-name: 'form-field-label', color-key: 30),
+        (variable-name: 'form-field-selected-label', color-key: 30),
+        (variable-name: 'form-field-disabled-border', color-key: 0, opacity: 0.12),
+        (variable-name: 'form-field-disabled-label', color-key: 0, opacity: 0.38)
+    ));
+}

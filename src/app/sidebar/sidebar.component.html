@@ -1,6 +1,14 @@
 <!-- Client Section -->
 <div class="client-section">
     <div class="section-label">CLIENT</div>
+    
+    <form-field>
+        <dropdown [(ngModel)]="selectedClient">
+            @for (client of clients; track client) {
+            <dropdown-item [value]="client">{{client}}</dropdown-item>
+            }
+        </dropdown>
+    </form-field>
 </div>
 
 <nav>
@@ -56,9 +64,7 @@
 
 
 <!-- Admin Section -->
-<div class="admin-section">
-    <div class="section-label">ADMIN</div>
-</div>
+<div class="section-label">ADMIN</div>
 
 
 <nav>

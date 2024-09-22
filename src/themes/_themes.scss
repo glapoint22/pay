@@ -7,6 +7,8 @@
 @use './avatar-theme' as avatar;
 @use './footer-theme' as footer;
 @use './sidebar-theme' as sidebar;
+@use './form-field-theme' as form-field;
+@use './dropdown-theme' as dropdown;
 
 
 @mixin define-theme($theme) {
@@ -19,5 +21,7 @@
         @include avatar.theme($theme);
         @include footer.theme($theme);
         @include sidebar.theme($theme);
+        @include form-field.theme($theme);
+        @include dropdown.theme($theme);
     }
 }

@@ -7,8 +7,9 @@
         (variable-name: 'sidebar-section-label', color-key: 15),
         (variable-name: 'sidebar-icon', color-key: 15),
         (variable-name: 'sidebar-nav-item-hover', color-key: 0, opacity: 0.02),
-        (variable-name: 'sidebar-nav-item-selected-background', color-key: 0, opacity: 0.051),
+        (variable-name: 'sidebar-nav-item-selected-background', color-key: 0, opacity: 0.05),
         (variable-name: 'sidebar-nav-item-text', color-key: 15),
-        (variable-name: 'sidebar-nav-item-selected-text', color-key: 0)
+        (variable-name: 'sidebar-nav-item-selected-text', color-key: 0),
+        (variable-name: 'sidebar-nav-focused', color-key: 0, opacity: 0.03)
     ));
 }

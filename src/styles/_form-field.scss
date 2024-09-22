@@ -1,0 +1,16 @@
+.form-field {
+    .dropdown {
+        fill: var(--dropdown-arrow)
+    }
+}
+
+.form-field-disabled {
+    .icon-button {
+        color: var(--icon-button-disabled-color);
+    }
+
+    &~form-field-hint {
+        color: var(--form-field-disabled-label-color);
+        user-select: none;
+    }
+}

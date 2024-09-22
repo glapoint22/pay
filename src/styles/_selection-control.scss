@@ -3,7 +3,6 @@
     display: inline-flex;
     cursor: pointer;
     align-items: center;
-    user-select: none;
 
     &:hover {
         input:not(:checked):not(:disabled):not(:focus) {
