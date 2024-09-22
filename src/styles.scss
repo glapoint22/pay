@@ -1,4 +1,12 @@
 @use './styles/reset';
-@use './themes/definitions';
 @use './styles/selection-control';
 @use './styles/radio-group';
+@use './themes/palettes' as palettes;
+@use './themes/themes' as themes;
+
+$light-theme: (
+    theme-name: light-theme,
+    palette: palettes.$light-palette
+);
+
+@include themes.define-theme($light-theme);

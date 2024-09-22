@@ -16,10 +16,10 @@
         }
 
         &:not(:disabled):checked~.checkmark {
-            background-color: var(--checkbox-selected-color);
+            background-color: var(--checkbox-selected);
 
             &:after {
-                border-color: var(--checkbox-selected-checkmark-color);
+                border-color: var(--checkbox-selected-checkmark);
             }
         }
     }

@@ -3,13 +3,17 @@
 @use './selection-control-theme' as selection-control;
 @use './checkbox-theme' as checkbox;
 @use './radio-button-theme' as radio-button;
+@use './header-theme' as header;
+@use './avatar-theme' as avatar;
 
 
-@mixin themes($theme) {
+@mixin define-theme($theme) {
     .#{map.get($theme, theme-name)} {
         @include app-theme.theme($theme);
         @include selection-control.theme($theme);
         @include checkbox.theme($theme);
         @include radio-button.theme($theme);
+        @include header.theme($theme);
+        @include avatar.theme($theme);
     }
 }

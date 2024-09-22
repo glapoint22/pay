@@ -9,11 +9,11 @@
         input:not(:checked):not(:disabled):not(:focus) {
 
             &~.checkmark {
-                border-color: var(--selection-control-hover-color);
+                border-color: var(--selection-control-hover);
             }
 
             &~.selection-control-background::before {
-                background-color: var(--selection-control-hover-background-color);
+                background-color: var(--selection-control-hover-background);
             }
         }
     }
@@ -21,12 +21,12 @@
     &:active {
         input:not(:disabled) {
             &~.selection-control-background::before {
-                background-color: var(--selection-control-selected-active-color);
+                background-color: var(--selection-control-selected-active);
             }
 
             &:not(:checked):not(:focus) {
                 &~.selection-control-background::before {
-                    background-color: var(--selection-control-unselected-active-color);
+                    background-color: var(--selection-control-unselected-active);
                 }
             }
         }
@@ -39,7 +39,7 @@
         padding: 0;
 
         &:disabled~.checkmark {
-            border-color: var(--selection-control-disabled-color);
+            border-color: var(--selection-control-disabled);
 
             &::after {
                 background-color: transparent;
@@ -50,15 +50,15 @@
         &:not(:disabled) {
             &:checked:focus~.checkmark {
                 &::before {
-                    background-color: var(--selection-control-selected-focus-color);
+                    background-color: var(--selection-control-selected-focus);
                 }
             }
 
             &:not(:checked):focus~.checkmark {
-                border-color: var(--selection-control-border-focus-color);
+                border-color: var(--selection-control-border-focus);
 
                 &::before {
-                    background-color: var(--selection-control-unselected-focus-color);
+                    background-color: var(--selection-control-unselected-focus);
                 }
             }
         }
@@ -66,13 +66,13 @@
 
     &:not([disabled=true]) {
         .selection-control-text {
-            color: var(--selection-control-text-color);
+            color: var(--selection-control-text);
         }
     }
 
     &[disabled=true] {
         cursor: default;
-        color: var(--selection-control-disabled-color);
+        color: var(--selection-control-disabled);
     }
 }
 
@@ -80,7 +80,7 @@
 
 .checkmark {
     border: 2px solid;
-    border-color: var(--selection-control-border-color);
+    border-color: var(--selection-control-border);
     transition: border-color 120ms;
     position: relative;
     margin-right: 10px;

@@ -2,7 +2,7 @@
 
 @mixin theme($theme) {
     @include utility.theme-variables($theme, (
-        (variable-name: 'checkbox-selected-color', color-key: 30),
-        (variable-name: 'checkbox-selected-checkmark-color', color-key: 100)
+        (variable-name: 'checkbox-selected', color-key: 30),
+        (variable-name: 'checkbox-selected-checkmark', color-key: 100)
     ));
 }

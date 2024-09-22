@@ -2,15 +2,15 @@
 
 @mixin theme($theme) {
     @include utility.theme-variables($theme, (
-        (variable-name: 'selection-control-border-color', color-key: 90),
-        (variable-name: 'selection-control-hover-color', color-key: 60),
-        (variable-name: 'selection-control-disabled-color', color-key: 10, opacity: 0.38),
-        (variable-name: 'selection-control-text-color', color-key: 15),
-        (variable-name: 'selection-control-unselected-focus-color', color-key: 30, opacity: 0.12),
-        (variable-name: 'selection-control-selected-focus-color', color-key: 30, opacity: 0.12),
-        (variable-name: 'selection-control-hover-background-color', color-key: 30, opacity: 0.04),
-        (variable-name: 'selection-control-border-focus-color', color-key: 60),
-        (variable-name: 'selection-control-unselected-active-color', color-key: 30, opacity: 0.08),
-        (variable-name: 'selection-control-selected-active-color', color-key: 30, opacity: 0.2)
+        (variable-name: 'selection-control-border', color-key: 90),
+        (variable-name: 'selection-control-hover', color-key: 60),
+        (variable-name: 'selection-control-disabled', color-key: 10, opacity: 0.38),
+        (variable-name: 'selection-control-text', color-key: 15),
+        (variable-name: 'selection-control-unselected-focus', color-key: 30, opacity: 0.12),
+        (variable-name: 'selection-control-selected-focus', color-key: 30, opacity: 0.12),
+        (variable-name: 'selection-control-hover-background', color-key: 30, opacity: 0.04),
+        (variable-name: 'selection-control-border-focus', color-key: 60),
+        (variable-name: 'selection-control-unselected-active', color-key: 30, opacity: 0.08),
+        (variable-name: 'selection-control-selected-active', color-key: 30, opacity: 0.2)
     ));
 }

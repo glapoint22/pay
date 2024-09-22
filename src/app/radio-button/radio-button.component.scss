@@ -1,10 +1,10 @@
 .radio-button {
     input:not(:disabled) {
         &:checked~.checkmark {
-            border-color: var(--radio-selected-color);
+            border-color: var(--radio-selected);
 
             &::after {
-                background-color: var(--radio-selected-checkmark-color);
+                background-color: var(--radio-selected-checkmark);
             }
         }
     }

@@ -2,7 +2,7 @@
 
 @mixin theme($theme) {
     @include utility.theme-variables($theme, (
-        (variable-name: 'radio-selected-checkmark-color', color-key: 30),
-        (variable-name: 'radio-selected-color', color-key: 60)
+        (variable-name: 'radio-selected-checkmark', color-key: 30),
+        (variable-name: 'radio-selected', color-key: 60)
     ));
 }
