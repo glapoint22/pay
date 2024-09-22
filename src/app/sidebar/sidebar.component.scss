@@ -2,13 +2,9 @@
     width: 100%;
     max-width: 240px;
     background: var(--sidebar-background);
-    padding-top: 20px;
     overflow: auto;
     border-right: 1px solid var(--sidebar-border);
-}
-
-.section {
-    margin-left: 20px;
+    padding: 20px;
 }
 
 .client-section {
@@ -34,12 +30,13 @@ nav {
     width: 100%;
     display: flex;
     align-items: center;
-    padding: 5px 5px 5px 20px;
+    padding: 5px;
     height: 44px;
     cursor: pointer;
     fill: var(--sidebar-icon);
+    border-radius: 5px;
 
-    &:hover {
+    &:hover:not(.active-link) {
         background: var(--sidebar-nav-item-hover);
     }
 }
@@ -49,4 +46,19 @@ nav {
     text-align: left;
     color: var(--sidebar-nav-item-text);
     margin-left: 10px;
+}
+
+a {
+    text-decoration: none;
+}
+
+.active-link {
+    background: var(--sidebar-nav-item-selected-background);
+    fill: var(--sidebar-nav-item-selected-text);
+    cursor: default;
+
+    .nav-text {
+        color: var(--sidebar-nav-item-selected-text);
+        font-weight: 600;
+    }
 }

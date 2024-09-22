@@ -1,53 +1,54 @@
-
 <!-- Client Section -->
-<div class="section client-section">
+<div class="client-section">
     <div class="section-label">CLIENT</div>
 </div>
 
 <nav>
     <!-- Dashboard -->
-    <a class="nav-item">
+    <a routerLink="dashboard" class="nav-item" routerLinkActive="active-link" (dragstart)="$event.preventDefault()">
         <icon name="home" [width]="20" [height]="17" />
         <div class="nav-text">Dashboard</div>
     </a>
 
 
     <!-- Transactions -->
-    <a class="nav-item">
+    <a routerLink="transactions" class="nav-item" routerLinkActive="active-link" (dragstart)="$event.preventDefault()">
         <icon name="transactions" [width]="18" [height]="20" />
         <div class="nav-text">Transactions</div>
     </a>
 
 
     <!-- Outbound Payments -->
-    <a class="nav-item">
+    <a routerLink="outbound-payments" class="nav-item" routerLinkActive="active-link"
+        (dragstart)="$event.preventDefault()">
         <icon name="outbound-payments" [width]="22" [height]="16" />
         <div class="nav-text">Outbound Payments</div>
     </a>
 
 
     <!-- Balances -->
-    <a class="nav-item">
+    <a routerLink="balances" class="nav-item" routerLinkActive="active-link" (dragstart)="$event.preventDefault()">
         <icon name="balances" [width]="20" [height]="18" />
         <div class="nav-text">Balances</div>
     </a>
 
     <!-- Reporting -->
-    <a class="nav-item">
+    <a routerLink="reporting" class="nav-item" routerLinkActive="active-link" (dragstart)="$event.preventDefault()">
         <icon name="reporting" [width]="18" [height]="18" />
         <div class="nav-text">Reporting</div>
     </a>
 
 
     <!-- Payors -->
-    <a class="nav-item">
+    <a routerLink="payors" class="nav-item" routerLinkActive="active-link" (dragstart)="$event.preventDefault()">
         <icon name="users" [width]="22" [height]="14" />
         <div class="nav-text">Payors</div>
     </a>
 
 
     <!-- Client Settings -->
-    <a class="nav-item">
+    <a routerLink="client-settings" class="nav-item" routerLinkActive="active-link"
+        (dragstart)="$event.preventDefault()">
         <icon name="settings" [width]="20" [height]="21" />
         <div class="nav-text">Client Settings</div>
     </a>
@@ -55,14 +56,15 @@
 
 
 <!-- Admin Section -->
-<div class="section admin-section">
+<div class="admin-section">
     <div class="section-label">ADMIN</div>
 </div>
 
 
 <nav>
     <!-- User Management -->
-    <a class="nav-item">
+    <a routerLink="user-management" class="nav-item" routerLinkActive="active-link"
+        (dragstart)="$event.preventDefault()">
         <icon name="users" [width]="22" [height]="14" />
         <div class="nav-text">User Management</div>
     </a>
