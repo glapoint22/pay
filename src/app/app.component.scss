@@ -1,0 +1,16 @@
+.main-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    padding-top: 78px;
+    overflow: auto;
+}
+
+.page {
+    flex: 1;
+    display: flex;
+}
+
+.router-outlet {
+    flex: 1;
+}

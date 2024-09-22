@@ -5,6 +5,8 @@
 @use './radio-button-theme' as radio-button;
 @use './header-theme' as header;
 @use './avatar-theme' as avatar;
+@use './footer-theme' as footer;
+@use './sidebar-theme' as sidebar;
 
 
 @mixin define-theme($theme) {
@@ -15,5 +17,7 @@
         @include radio-button.theme($theme);
         @include header.theme($theme);
         @include avatar.theme($theme);
+        @include footer.theme($theme);
+        @include sidebar.theme($theme);
     }
 }

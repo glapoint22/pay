@@ -2,7 +2,7 @@
 
 @mixin theme($theme) {
     @include utility.theme-variables($theme, (
-        (variable-name: 'app-background', color-key: 100),
+        (variable-name: 'app-background', color-key: 1000),
         (variable-name: 'app-text', color-key: 15)
     ));
 }

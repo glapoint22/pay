@@ -1,0 +1,52 @@
+:host {
+    width: 100%;
+    max-width: 240px;
+    background: var(--sidebar-background);
+    padding-top: 20px;
+    overflow: auto;
+    border-right: 1px solid var(--sidebar-border);
+}
+
+.section {
+    margin-left: 20px;
+}
+
+.client-section {
+    margin-bottom: 40px;
+}
+
+.admin-section {
+    margin-bottom: 10px;
+}
+
+.section-label {
+    font-size: 12px;
+    font-weight: 500;
+    text-align: left;
+    color: var(--sidebar-section-label);
+}
+
+nav {
+    margin-bottom: 80px;
+}
+
+.nav-item {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 5px 5px 5px 20px;
+    height: 44px;
+    cursor: pointer;
+    fill: var(--sidebar-icon);
+
+    &:hover {
+        background: var(--sidebar-nav-item-hover);
+    }
+}
+
+.nav-text {
+    font-size: 15px;
+    text-align: left;
+    color: var(--sidebar-nav-item-text);
+    margin-left: 10px;
+}

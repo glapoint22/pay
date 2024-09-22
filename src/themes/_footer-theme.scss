@@ -1,0 +1,10 @@
+@use './utility';
+
+@mixin theme($theme) {
+    @include utility.theme-variables($theme, (
+        (variable-name: 'footer-background', color-key: 12),
+        (variable-name: 'footer-link', color-key: 61),
+        (variable-name: 'footer-dot', color-key: 95),
+        (variable-name: 'footer-copyright', color-key: 92),
+    ));
+}

@@ -3,6 +3,6 @@
 @mixin theme($theme) {
     @include utility.theme-variables($theme, (
         (variable-name: 'avatar-background', color-key: 30),
-        (variable-name: 'avatar-icon', color-key: 100)
+        (variable-name: 'avatar-icon', color-key: 1000)
     ));
 }

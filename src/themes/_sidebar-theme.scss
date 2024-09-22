@@ -1,0 +1,12 @@
+@use './utility';
+
+@mixin theme($theme) {
+    @include utility.theme-variables($theme, (
+        (variable-name: 'sidebar-background', color-key: 97),
+        (variable-name: 'sidebar-border', color-key: 92),
+        (variable-name: 'sidebar-section-label', color-key: 15),
+        (variable-name: 'sidebar-icon', color-key: 15),
+        (variable-name: 'sidebar-nav-item-hover', color-key: 96),
+        (variable-name: 'sidebar-nav-item-text', color-key: 15)
+    ));
+}

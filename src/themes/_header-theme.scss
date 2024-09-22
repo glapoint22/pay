@@ -4,10 +4,10 @@
     @include utility.theme-variables($theme, (
         (variable-name: 'header-background1', color-key: 11),
         (variable-name: 'header-background2', color-key: 12),
-        (variable-name: 'header-smi-logo', color-key: 100),
-        (variable-name: 'header-smi-pay-text', color-key: 100),
+        (variable-name: 'header-smi-logo', color-key: 1000),
+        (variable-name: 'header-smi-pay-text', color-key: 1000),
         (variable-name: 'header-reporting-admin-text', color-key: 61),
-        (variable-name: 'header-bell-icon', color-key: 100),
+        (variable-name: 'header-bell-icon', color-key: 1000),
         (variable-name: 'header-notification-indicator', color-key: 31)
     ));
 }

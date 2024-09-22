@@ -1,4 +1,4 @@
-.header {
+header {
     position: fixed;
     height: 78px;
     width: 100%;
@@ -21,7 +21,7 @@
 }
 
 .site-name {
-    height: 43px;
+    height: 47px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -38,9 +38,7 @@
 }
 
 .reporting-admin {
-    font-family: Inter;
     font-size: 14px;
-    font-weight: 500;
     line-height: 14px;
     text-align: left;
     color: var(--header-reporting-admin-text);
