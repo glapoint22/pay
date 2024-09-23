@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
+import { DividerComponent } from '../divider/divider.component';
 
 @Component({
   selector: 'transactions',
   standalone: true,
-  imports: [],
+  imports: [DividerComponent],
   templateUrl: './transactions.component.html',
   styleUrl: './transactions.component.scss'
 })

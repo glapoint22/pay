@@ -1,0 +1,21 @@
+.page {
+    padding: 40px;
+
+    h1 {
+        font-family: "Source Serif Pro";
+        font-size: 40px;
+        color: var(--page-header);
+        font-weight: 600;
+        margin: 0 0 4px;
+
+        &+divider {
+            border-top-color: var(--h1-divider);
+            margin-bottom: 40px;
+        }
+    }
+
+    h3 {
+        font-size: 20px;
+        color: var(--page-header);
+    }
+}

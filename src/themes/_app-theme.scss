@@ -3,6 +3,8 @@
 @mixin theme($theme) {
     @include utility.theme-variables($theme, (
         (variable-name: 'app-background', color-key: 1000),
-        (variable-name: 'app-text', color-key: 15)
+        (variable-name: 'app-text', color-key: 15),
+        (variable-name: 'page-header', color-key: 0),
+        (variable-name: 'h1-divider', color-key: 61)
     ));
 }
