@@ -104,5 +104,8 @@
         <path d="M10.3335 16L18.9938 4H1.67324L10.3335 16Z"/>
     </symbol>
 
+    <symbol id="arrow-up" viewBox="0 -960 960 960">
+        <path d="m280-400 200-200 200 200H280Z" />
+    </symbol>
 
 </svg>

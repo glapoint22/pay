@@ -1,0 +1,112 @@
+:host {
+    display: block;
+}
+
+
+
+.data-grid-base {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.data-grid-header {
+    width: 100%;
+    height: 40px;
+    background: #EBF0F4;
+    position: relative;
+    border-top: 1px solid #94C3E8;
+    border-bottom: 1px solid #94C3E87A;
+    font-weight: 600;
+    color: #222222;
+    
+    .data-grid-column {
+        cursor: pointer;
+        font-weight: 500;
+    }
+}
+
+.data-grid-row-container {
+    width: 100%;
+    overflow: auto;
+    flex: 1;
+    // background: var(--data-grid-row-background-color);
+    // border-top: 1px solid var(--data-grid-border-color);
+}
+
+.data-grid-columns-container {
+    height: 100%;
+    display: flex;
+    width: max-content;
+}
+
+.data-grid-row {
+    width: fit-content;
+    height: 42px;
+    border-bottom: 1px solid #96c5e97a;
+
+    &:hover {
+        background: rgba(150, 197, 233, 0.05);
+    }
+}
+
+.data-grid-column {
+    height: 100%;
+    padding: 0 16px;
+    // border-right: 1px solid var(--data-grid-border-color);
+    position: relative;
+    user-select: none;
+}
+
+.data-grid-cell {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    user-select: none;
+    overflow: hidden;
+}
+
+.data-grid-cell-value {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.cell-style {
+    color: #000000;
+    font-size: 14px;
+}
+
+.resizer {
+    position: absolute;
+    top: 0;
+    right: -3px;
+    width: 5px;
+    height: 100%;
+    cursor: col-resize;
+    z-index: 10;
+
+    &::after {
+        content: "";
+        position: absolute;
+        z-index: 1;
+        display: block;
+        width: 2px;
+        height: 30%;
+        top: calc(50% - 30% * 0.5);
+        background-color: #94c3e8;
+    }
+}
+
+.sort-arrow {
+    margin-left: 5px;
+    flex-shrink: 0;
+    // fill: var(--data-grid-arrow-color);
+}
+
+// .selected-row {
+//     background: var(--data-grid-selected-row-color);
+//     color: var(--data-grid-selected-row-text-color);
+// }
