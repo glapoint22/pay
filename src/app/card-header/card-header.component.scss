@@ -1,0 +1,17 @@
+.card-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.card-title {
+    font-weight: 600;
+    color: black;
+}
+
+icon {
+    display: flex;
+    margin-left: 10px;
+    cursor: pointer;
+    fill: #7AA8D0;
+}

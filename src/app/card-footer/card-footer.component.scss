@@ -1,0 +1,28 @@
+.card-footer {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.adjustment {
+    display: flex;
+    align-items: center;
+
+    icon {
+        display: flex;
+    }
+}
+
+.adjustment-value {
+    margin-left: 5px;
+    font-size: 14px;
+}
+
+.view-detail {
+    font-size: 14px;
+    text-decoration: underline;
+    cursor: pointer;
+    color: #094A82;
+    font-weight: 500;
+}

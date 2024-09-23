@@ -1,10 +1,20 @@
 import { Component } from '@angular/core';
 import { DividerComponent } from '../divider/divider.component';
+import { CardComponent } from '../card/card.component';
+import { CardHeaderComponent } from '../card-header/card-header.component';
+import { CardContentComponent } from '../card-content/card-content.component';
+import { CardFooterComponent } from '../card-footer/card-footer.component';
 
 @Component({
   selector: 'dashboard',
   standalone: true,
-  imports: [DividerComponent],
+  imports: [
+    DividerComponent,
+    CardComponent,
+    CardHeaderComponent,
+    CardContentComponent,
+    CardFooterComponent
+  ],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss'
 })
