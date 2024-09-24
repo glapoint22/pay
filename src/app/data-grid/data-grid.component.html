@@ -39,8 +39,8 @@
                     <div class="data-grid-cell cell-style" [style]="getCellStyle(column, row)">
                         <div class="data-grid-cell-value">
 
-                            @if (getComponent(column, row, column.cellRendererParams); as selectedComponent) {
-                                <ng-template [dynamicComponent]="selectedComponent"></ng-template>
+                            @if (getComponent(column, row, column.cellRendererParams); as component) {
+                                <ng-template [createComponent]="component"></ng-template>
                             } @else {
                                 {{ row[column.field] }}
                             }

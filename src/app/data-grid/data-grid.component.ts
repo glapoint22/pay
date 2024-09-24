@@ -1,13 +1,14 @@
-import { Component, ElementRef, inject, input, model, Renderer2, signal, viewChild, ViewContainerRef } from '@angular/core';
+import { Component, ElementRef, inject, model, Renderer2, signal, viewChild } from '@angular/core';
 import { ColDef, ComponentResult, ICellParams } from './models/col-def';
 import { CommonModule } from '@angular/common';
 import { OverlayModule } from '@angular/cdk/overlay';
 import { IconComponent } from '../icon/icon.component';
+import { CreateComponentDirective } from '../create-component.directive';
 
 @Component({
   selector: 'data-grid',
   standalone: true,
-  imports: [CommonModule, OverlayModule, IconComponent],
+  imports: [CommonModule, OverlayModule, IconComponent, CreateComponentDirective],
   templateUrl: './data-grid.component.html',
   styleUrl: './data-grid.component.scss'
 })
@@ -22,7 +23,7 @@ export class DataGridComponent {
   private header = viewChild<ElementRef<HTMLElement>>('header');
 
 
-  onRowScroll(event: Event) {
+  protected onRowScroll(event: Event) {
     const scrollLeft = (event.target as HTMLElement).scrollLeft;
 
     this.header()?.nativeElement.setAttribute('style', `left: -${scrollLeft}px`);
@@ -82,9 +83,9 @@ export class DataGridComponent {
   // }
 
 
-  getComponent(column: ColDef, row: any, params: any): ComponentResult | null {
+  protected getComponent(column: ColDef, row: any, params: any): ComponentResult | null {
     if (column.component) {
-      if (typeof column.component === 'function') {
+      if (typeof column.component === 'function' && !this.isComponent(column.component)) {
         const result = column.component(this.getParams(params, row, column));
 
         if (result) {
@@ -114,7 +115,7 @@ export class DataGridComponent {
   }
 
 
-  public getCellStyle(column: ColDef, row: any): any {
+  protected getCellStyle(column: ColDef, row: any): any {
     if (column.cellStyle) {
       if (typeof column.cellStyle === 'function') {
         return column.cellStyle(this.getParams(null, row, column));
@@ -123,5 +124,10 @@ export class DataGridComponent {
       }
     }
     return null;
+  }
+
+
+  private isComponent(component: any): boolean {
+    return component instanceof Function && component.prototype && component.prototype.constructor === component;
   }
 }

@@ -5,6 +5,7 @@
     overflow: auto;
     border-right: 1px solid var(--sidebar-border);
     padding: 20px;
+    flex-shrink: 0;
 }
 
 .client-section {
