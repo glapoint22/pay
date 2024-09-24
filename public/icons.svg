@@ -107,5 +107,11 @@
     <symbol id="arrow-up" viewBox="0 -960 960 960">
         <path d="m280-400 200-200 200 200H280Z" />
     </symbol>
+    
+
+    <!-- download -->
+    <symbol id="download" viewBox="0 0 10 13">
+        <path d="M10 4.68187H7.14286V0.318237H2.85714V4.68187H0L5 9.77278L10 4.68187ZM0 11.2273V12.6819H10V11.2273H0Z"/>
+    </symbol>
 
 </svg>

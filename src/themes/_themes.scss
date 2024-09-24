@@ -9,6 +9,7 @@
 @use './sidebar-theme' as sidebar;
 @use './form-field-theme' as form-field;
 @use './dropdown-theme' as dropdown;
+@use './button-theme' as button;
 
 
 @mixin define-theme($theme) {
@@ -23,5 +24,6 @@
         @include sidebar.theme($theme);
         @include form-field.theme($theme);
         @include dropdown.theme($theme);
+        @include button.theme($theme);
     }
 }

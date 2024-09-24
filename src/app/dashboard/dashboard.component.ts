@@ -4,6 +4,7 @@ import { CardComponent } from '../card/card.component';
 import { CardHeaderComponent } from '../card-header/card-header.component';
 import { CardContentComponent } from '../card-content/card-content.component';
 import { CardFooterComponent } from '../card-footer/card-footer.component';
+import { IconComponent } from '../icon/icon.component';
 
 @Component({
   selector: 'dashboard',
@@ -13,7 +14,8 @@ import { CardFooterComponent } from '../card-footer/card-footer.component';
     CardComponent,
     CardHeaderComponent,
     CardContentComponent,
-    CardFooterComponent
+    CardFooterComponent,
+    IconComponent
   ],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss'
