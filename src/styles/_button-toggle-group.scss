@@ -1,0 +1,46 @@
+.button-toggle-group {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+
+    button-toggle {
+        &:first-child {
+            button {
+                border-top-left-radius: 5px;
+                border-bottom-left-radius: 5px;
+            }
+        }
+        
+    
+        &:last-child {
+            button {
+                border-top-right-radius: 5px;
+                border-bottom-right-radius: 5px;
+            }
+        }
+
+        &:not(:last-child) {
+            button {
+                border-right: none;
+            }
+        }
+
+        &.button-toggle-selected {
+            &+button-toggle {
+                button {
+                    border-left-color: red;
+                }
+            }
+        }
+    }
+
+    
+
+
+
+    .button-toggle-selected {
+        button {
+            background-color: #FFFAEE;
+        }
+    }
+}
