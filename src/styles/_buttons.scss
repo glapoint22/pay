@@ -1,11 +1,11 @@
-$hover-amount: 4;
-$active-amount: 8;
+$hover-amount: 3;
+$active-amount: 6;
 
 
-@mixin darken($color, $amount) {
-    background-color: hsl(from var(#{$color}) h s calc(l - #{$amount}));
-    color: hsl(from var(--button-text) h s calc(l - #{$amount}));
-    fill: hsl(from var(--button-text) h s calc(l - #{$amount}));
+@mixin lighten($color, $amount) {
+    background-color: hsl(from var(#{$color}) h s calc(l + #{$amount}));
+    color: hsl(from var(--button-label) h s calc(l + #{$amount}));
+    fill: hsl(from var(--button-label) h s calc(l + #{$amount}));
 }
 
 .button {
@@ -14,12 +14,12 @@ $active-amount: 8;
     font-family: 'Inter', sans-serif;
     font-size: 14px;
     cursor: pointer;
-    color: var(--button-text);
+    color: var(--button-label);
     display: inline-flex;
     align-items: center;
 
     icon {
-        fill: var(--button-text);
+        fill: var(--button-label);
 
         &:is(:first-child) {
             margin-right: 10px;
@@ -28,6 +28,16 @@ $active-amount: 8;
         &:is(:last-child) {
             margin-left: 10px;
         }
+    }
+
+    &:focus-visible {
+        outline: 1px solid var(--button-focus);
+    }
+
+    &:disabled {
+        background-color: var(--button-disabled);
+        color: var(--button-label-disabled);
+        cursor: default;
     }
 }
 
@@ -50,13 +60,15 @@ $active-amount: 8;
     padding: 15px;
     font-size: 16px;
 
-    &:hover {
-        @include darken(--button-submit, $hover-amount);
+    &:hover:not(:disabled) {
+        @include lighten(--button-submit, $hover-amount);
     }
 
-    &:active {
-        @include darken(--button-submit, $active-amount);
+    &:active:not(:disabled) {
+        @include lighten(--button-submit, $active-amount);
     }
+
+    
 }
 
 
@@ -66,12 +78,12 @@ $active-amount: 8;
     background-color: var(--button-apply);
     padding: 8px 15px;
 
-    &:hover {
-        @include darken(--button-apply, $hover-amount);
+    &:hover:not(:disabled) {
+        @include lighten(--button-apply, $hover-amount);
     }
 
-    &:active {
-        @include darken(--button-apply, $active-amount);
+    &:active:not(:disabled) {
+        @include lighten(--button-apply, $active-amount);
     }
 }
 
@@ -81,12 +93,12 @@ $active-amount: 8;
     background-color: var(--button-action);
     padding: 5px 10px;
 
-    &:hover {
-        @include darken(--button-action, $hover-amount);
+    &:hover:not(:disabled) {
+        @include lighten(--button-action, $hover-amount);
     }
 
-    &:active {
-        @include darken(--button-action, $active-amount);
+    &:active:not(:disabled) {
+        @include lighten(--button-action, $active-amount);
     }
 }
 
@@ -97,12 +109,12 @@ $active-amount: 8;
     background-color: var(--button-clear);
     padding: 5px 10px;
 
-    &:hover {
-        @include darken(--button-clear, $hover-amount);
+    &:hover:not(:disabled) {
+        @include lighten(--button-clear, $hover-amount);
     }
 
-    &:active {
-        @include darken(--button-clear, $active-amount);
+    &:active:not(:disabled) {
+        @include lighten(--button-clear, $active-amount);
     }
 }
 
@@ -112,11 +124,44 @@ $active-amount: 8;
     background-color: var(--button-deposit);
     padding: 5px 10px;
 
-    &:hover {
-        @include darken(--button-deposit, $hover-amount);
+    &:hover:not(:disabled) {
+        @include lighten(--button-deposit, $hover-amount);
     }
 
-    &:active {
-        @include darken(--button-deposit, $active-amount);
+    &:active:not(:disabled) {
+        @include lighten(--button-deposit, $active-amount);
+    }
+}
+
+
+.button-text {
+    @extend .button-rectangle;
+    background-color: transparent;
+    font-size: 16px;
+    color: var(--button-text);
+    text-decoration: underline;
+    padding: 8px 15px;
+
+    &:hover:not(:disabled) {
+        background-color: var(--button-text-background-hover);
+    }
+
+    &:active:not(:disabled) {
+        background-color: var(--button-text-background-active);
+    }
+
+    &:focus-visible {
+        outline: none;
+
+        &:not(:active) {
+            background-color: var(--button-text-background-focus);
+        }
+        
+    }
+
+    &:disabled {
+        background-color: transparent;
+        color: var(--button-label-disabled);
+        cursor: default;
     }
 }

@@ -1,0 +1,10 @@
+@use './utility';
+
+@mixin theme($theme) {
+    @include utility.theme-variables($theme, (
+        (variable-name: 'modal-popup-header-foreground', color-key: 0),
+        (variable-name: 'modal-popup-header-footer-background', color-key: 160),
+        (variable-name: 'modal-popup-border', color-key: 61, opacity: 0.48),
+        (variable-name: 'modal-popup-content-background', color-key: 1000),
+    ));
+}

@@ -7,6 +7,13 @@
         (variable-name: 'button-action', color-key: 120),
         (variable-name: 'button-clear', color-key: 130),
         (variable-name: 'button-deposit', color-key: 140),
-        (variable-name: 'button-text', color-key: 1000),
+        (variable-name: 'button-text', color-key: 150),
+        (variable-name: 'button-text-background-hover', color-key: 0, opacity: 0.06),
+        (variable-name: 'button-text-background-active', color-key: 0, opacity: 0.08),
+        (variable-name: 'button-text-background-focus', color-key: 0, opacity: 0.12),
+        (variable-name: 'button-label', color-key: 1000),
+        (variable-name: 'button-focus', color-key: 0),
+        (variable-name: 'button-disabled', color-key: 0, opacity: 0.15),
+        (variable-name: 'button-label-disabled', color-key: 0, opacity: 0.25)
     ));
 }
