@@ -11,6 +11,7 @@
 @use './dropdown-theme' as dropdown;
 @use './button-theme' as button;
 @use './modal-popup-theme' as modal-popup;
+@use './form-theme' as form-theme;
 
 
 @mixin define-theme($theme) {
@@ -27,5 +28,6 @@
         @include dropdown.theme($theme);
         @include button.theme($theme);
         @include modal-popup.theme($theme);
+        @include form-theme.theme($theme);
     }
 }

@@ -1,0 +1,15 @@
+@use './utility';
+
+@mixin theme($theme) {
+    @include utility.theme-variables($theme, (
+        (variable-name: 'form-header-background', color-key: 12, opacity: 0.64),
+        (variable-name: 'form-header-text', color-key: 1000),
+        (variable-name: 'form-content-background', color-key: 1000),
+        (variable-name: 'form-footer-background', color-key: 180),
+        (variable-name: 'form-text1', color-key: 0),
+        (variable-name: 'form-text2', color-key: 200),
+        (variable-name: 'form-border', color-key: 90),
+        (variable-name: 'form-link1', color-key: 220),
+        (variable-name: 'form-link2', color-key: 150)
+    ));
+}
