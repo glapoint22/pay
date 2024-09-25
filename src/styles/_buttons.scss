@@ -19,8 +19,15 @@ $active-amount: 8;
     align-items: center;
 
     icon {
-        margin-left: 10px;
         fill: var(--button-text);
+
+        &:is(:first-child) {
+            margin-right: 10px;
+        }
+
+        &:is(:last-child) {
+            margin-left: 10px;
+        }
     }
 }
 
@@ -80,5 +87,36 @@ $active-amount: 8;
 
     &:active {
         @include darken(--button-action, $active-amount);
+    }
+}
+
+
+
+.button-clear {
+    @extend .button-rectangle;
+    background-color: var(--button-clear);
+    padding: 5px 10px;
+
+    &:hover {
+        @include darken(--button-clear, $hover-amount);
+    }
+
+    &:active {
+        @include darken(--button-clear, $active-amount);
+    }
+}
+
+
+.button-deposit {
+    @extend .button-rectangle;
+    background-color: var(--button-deposit);
+    padding: 5px 10px;
+
+    &:hover {
+        @include darken(--button-deposit, $hover-amount);
+    }
+
+    &:active {
+        @include darken(--button-deposit, $active-amount);
     }
 }
