@@ -1,9 +1,11 @@
 import { Component, ElementRef, inject, model, Renderer2, signal, viewChild } from '@angular/core';
-import { ColDef, ComponentResult, ICellParams } from './models/col-def';
 import { CommonModule } from '@angular/common';
 import { OverlayModule } from '@angular/cdk/overlay';
 import { IconComponent } from '../icon/icon.component';
 import { CreateComponentDirective } from '../create-component.directive';
+import { ColDef } from './models/col-def';
+import { ComponentResult } from './models/component';
+import { ICellParams } from './models/cell-params';
 
 @Component({
   selector: 'data-grid',

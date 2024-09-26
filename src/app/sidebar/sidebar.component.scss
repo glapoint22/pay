@@ -20,7 +20,7 @@
     margin-bottom: 10px;
 }
 
-nav {
+nav:not(:last-child) {
     margin-bottom: 80px;
 }
 
@@ -66,6 +66,5 @@ a {
 
     .nav-text {
         color: var(--sidebar-nav-item-selected-text);
-        // font-weight: 600;
     }
 }

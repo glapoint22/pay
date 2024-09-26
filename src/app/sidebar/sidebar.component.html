@@ -40,13 +40,6 @@
         <div class="nav-text">Balances</div>
     </a>
 
-    <!-- Reporting -->
-    <a routerLink="reporting" class="nav-item" routerLinkActive="active-link" (dragstart)="$event.preventDefault()">
-        <icon name="reporting" [width]="18" [height]="18" />
-        <div class="nav-text">Reporting</div>
-    </a>
-
-
     <!-- Payors -->
     <a routerLink="payors" class="nav-item" routerLinkActive="active-link" (dragstart)="$event.preventDefault()">
         <icon name="users" [width]="22" [height]="14" />
@@ -61,6 +54,22 @@
         <div class="nav-text">Client Settings</div>
     </a>
 </nav>
+
+
+
+<!-- Quick Links Section -->
+<div class="section-label">QUICK LINKS</div>
+
+
+<nav>
+    <!-- Over the Threshold -->
+    <a routerLink="over-threshold" class="nav-item" routerLinkActive="active-link"
+        (dragstart)="$event.preventDefault()">
+        <icon name="chart" [width]="18" [height]="18" />
+        <div class="nav-text">Over the Threshold</div>
+    </a>
+</nav>
+
 
 
 <!-- Admin Section -->

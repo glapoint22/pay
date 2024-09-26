@@ -1,5 +1,5 @@
 import { ComponentRef, Directive, inject, Injector, input, ViewContainerRef } from '@angular/core';
-import { COMPONENT_PARAMS } from './data-grid/models/col-def';
+import { COMPONENT_PARAMS } from './data-grid/models/component';
 
 @Directive({
   selector: '[createComponent]',

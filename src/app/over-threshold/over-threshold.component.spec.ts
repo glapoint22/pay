@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ReportingComponent } from './reporting.component';
+import { OverThresholdComponent } from './over-threshold.component';
 
-describe('ReportingComponent', () => {
-  let component: ReportingComponent;
-  let fixture: ComponentFixture<ReportingComponent>;
+describe('OverThresholdComponent', () => {
+  let component: OverThresholdComponent;
+  let fixture: ComponentFixture<OverThresholdComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ReportingComponent]
+      imports: [OverThresholdComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(ReportingComponent);
+    fixture = TestBed.createComponent(OverThresholdComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

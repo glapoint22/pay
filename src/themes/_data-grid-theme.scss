@@ -1,0 +1,13 @@
+@use './utility';
+
+@mixin theme($theme) {
+    @include utility.theme-variables($theme, (
+        (variable-name: 'data-grid-header-background', color-key: 180),
+        (variable-name: 'data-grid-header-foreground', color-key: 290),
+        (variable-name: 'data-grid-header-border-top', color-key: 300),
+        (variable-name: 'data-grid-row', color-key: 300, opacity: 0.48),
+        (variable-name: 'data-grid-sort-arrow', color-key: 30),
+        (variable-name: 'data-grid-cell', color-key: 0),
+        (variable-name: 'data-grid-row-hover', color-key: 300, opacity: 0.05),
+    ));
+}

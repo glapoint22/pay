@@ -27,8 +27,8 @@ export const routes: Routes = [
         loadComponent: () => import('./balances/balances.component').then(m => m.BalancesComponent)
     },
     {
-        path: 'reporting',
-        loadComponent: () => import('./reporting/reporting.component').then(m => m.ReportingComponent)
+        path: 'over-threshold',
+        loadComponent: () => import('./over-threshold/over-threshold.component').then(m => m.OverThresholdComponent)
     },
     {
         path: 'payors',

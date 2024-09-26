@@ -2,12 +2,12 @@ import { Component } from '@angular/core';
 import { DividerComponent } from '../divider/divider.component';
 
 @Component({
-  selector: 'reporting',
+  selector: 'over-threshold',
   standalone: true,
   imports: [DividerComponent],
-  templateUrl: './reporting.component.html',
-  styleUrl: './reporting.component.scss'
+  templateUrl: './over-threshold.component.html',
+  styleUrl: './over-threshold.component.scss'
 })
-export class ReportingComponent {
+export class OverThresholdComponent {
 
 }
