@@ -8,8 +8,9 @@
         (variable-name: 'button-toggle-selected-border', color-key: 260),
         (variable-name: 'button-toggle-selected-background', color-key: 280),
         (variable-name: 'button-toggle-selected-foreground', color-key: 0),
-        (variable-name: 'button-toggle-hover', color-key: 0, opacity: 0.01),
-        (variable-name: 'button-toggle-active', color-key: 260, opacity: 0.15)
+        (variable-name: 'button-toggle-hover', color-key: 260, opacity: 0.1),
+        (variable-name: 'button-toggle-active', color-key: 260, opacity: 0.5),
+        (variable-name: 'button-toggle-focus', color-key: 260, opacity: 0.5)
 
     ));
 }

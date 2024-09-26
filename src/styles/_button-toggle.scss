@@ -79,6 +79,10 @@
         border-style: solid;
         cursor: pointer;
         font-weight: 600;
+
+        &:focus-visible {
+            background: var(--button-toggle-focus);
+        }
     }
 
     icon {
