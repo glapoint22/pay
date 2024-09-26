@@ -1,0 +1,9 @@
+@use './utility';
+
+@mixin theme($theme) {
+    @include utility.theme-variables($theme, (
+        (variable-name: 'expansion-panel-background', color-key: 97),
+        (variable-name: 'expansion-panel-foreground', color-key: 290),
+        (variable-name: 'expansion-panel-border', color-key: 160),
+    ));
+}

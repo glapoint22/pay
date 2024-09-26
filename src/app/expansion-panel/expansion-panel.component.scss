@@ -1,0 +1,37 @@
+.expansion-panel {
+    padding: 10px 20px;
+    background-color: var(--expansion-panel-background);
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--expansion-panel-border);
+    font-size: 14px;
+    color: var(--expansion-panel-foreground);
+}
+
+.expansion-panel-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.25s ease-out, padding 0.25s ease-out;
+}
+
+
+
+.expansion-panel-arrow {
+    transition: transform 0.25s ease;
+    transform: rotate(-90deg);
+}
+
+.expansion-panel-arrow.expanded {
+    transform: rotate(0deg);
+}
+
+.expansion-panel-arrow-title-container {
+    display: flex;
+    align-items: center;
+}
+
+.expansion-panel-title {
+    margin-left: 10px;
+}
