@@ -1,19 +1,11 @@
 @use './styles/reset';
+@use './styles/theme-definitions';
 @use '@angular/cdk/overlay-prebuilt.css';
 @use './styles/selection-control';
 @use './styles/radio-group';
-@use './themes/palettes' as palettes;
-@use './themes/themes' as themes;
 @use './styles/form-field';
 @use './styles/page';
 @use './styles/buttons';
 @use './styles/modal-popup';
-@use './styles/button-toggle-group';
+@use './styles/button-toggle';
 @use './styles/data-grid-resizer-overlay';
-
-$light-theme: (
-    theme-name: light-theme,
-    palette: palettes.$light-palette
-);
-
-@include themes.define-theme($light-theme);

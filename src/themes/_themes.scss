@@ -12,6 +12,7 @@
 @use './button-theme' as button;
 @use './modal-popup-theme' as modal-popup;
 @use './form-theme' as form-theme;
+@use './button-toggle-theme' as button-toggle;
 
 
 @mixin define-theme($theme) {
@@ -29,5 +30,6 @@
         @include button.theme($theme);
         @include modal-popup.theme($theme);
         @include form-theme.theme($theme);
+        @include button-toggle.theme($theme);
     }
 }

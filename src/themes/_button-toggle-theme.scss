@@ -1,0 +1,15 @@
+@use './utility';
+
+@mixin theme($theme) {
+    @include utility.theme-variables($theme, (
+        (variable-name: 'button-toggle-border', color-key: 90),
+        (variable-name: 'button-toggle-background', color-key: 1000),
+        (variable-name: 'button-toggle-foreground', color-key: 240),
+        (variable-name: 'button-toggle-selected-border', color-key: 260),
+        (variable-name: 'button-toggle-selected-background', color-key: 280),
+        (variable-name: 'button-toggle-selected-foreground', color-key: 0),
+        (variable-name: 'button-toggle-hover', color-key: 0, opacity: 0.01),
+        (variable-name: 'button-toggle-active', color-key: 260, opacity: 0.15)
+
+    ));
+}

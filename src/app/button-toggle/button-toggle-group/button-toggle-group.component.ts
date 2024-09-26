@@ -20,17 +20,20 @@ export class ButtonToggleGroupComponent implements ControlValueAccessor {
   private buttons = contentChildren(ButtonToggleComponent);
 
   public writeValue(value: any): void {
-    const button = this.buttons().find(x => x.value() === value);
-
-    if (button)
-      button.selected = true;
+    this.setSelected(value);
   }
   
   
+  private setSelected(value: any): void {
+    this.buttons().forEach(x => x.selected = x.value() === value);
+  }
   
   
   public registerOnChange(fn: any): void {
-    this.onChange = fn;
+    this.onChange = (value: any) => {
+      this.setSelected(value);
+      fn(value);
+    };
   }
   
   

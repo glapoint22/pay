@@ -1,4 +1,4 @@
-import { Component, inject, input } from '@angular/core';
+import { Component, HostBinding, inject, input } from '@angular/core';
 import { ButtonToggleGroupComponent } from './button-toggle-group/button-toggle-group.component';
 
 @Component({
@@ -12,9 +12,21 @@ export class ButtonToggleComponent {
   public selected!: boolean;
   public value = input<any>();
   protected buttonToggleGroup: ButtonToggleGroupComponent = inject(ButtonToggleGroupComponent);
+  
 
-  protected onChange(): void {
+  protected onClick(): void {
     if (this.buttonToggleGroup.onChange)
       this.buttonToggleGroup.onChange(this.value());
+  }
+
+  @HostBinding('class.button-toggle')
+  protected get applyButtonToggle() {
+    return true;
+  }
+
+
+  @HostBinding('class.button-toggle-selected')
+  protected get applyButtonToggleSelected() {
+    return this.selected;
   }
 }
