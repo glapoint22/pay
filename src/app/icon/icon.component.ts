@@ -9,6 +9,4 @@ import { Component, input } from '@angular/core';
 })
 export class IconComponent {
   public name = input.required<string>();
-  public width = input.required<number>();
-  public height = input.required<number>();
 }

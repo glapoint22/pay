@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { DividerComponent } from '../divider/divider.component';
+import { PageHeaderComponent } from "../page-header/page-header.component";
 
 @Component({
   selector: 'payors',
   standalone: true,
-  imports: [DividerComponent],
+  imports: [PageHeaderComponent],
   templateUrl: './payors.component.html',
   styleUrl: './payors.component.scss'
 })

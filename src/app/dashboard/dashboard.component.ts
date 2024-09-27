@@ -1,11 +1,13 @@
 import { Component } from '@angular/core';
-import { DividerComponent } from '../divider/divider.component';
+import { PageHeaderComponent } from '../page-header/page-header.component';
+import { TagComponent } from '../tag/tag.component';
 
 @Component({
   selector: 'dashboard',
   standalone: true,
   imports: [
-    DividerComponent,
+    PageHeaderComponent,
+    TagComponent
   ],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss'

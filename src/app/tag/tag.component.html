@@ -1,0 +1,7 @@
+<div class="tag" [ngClass]="cssClass()">
+    {{label()}}
+
+    @if(icon()) {
+        <icon [name]="icon()!"></icon>
+    }
+</div>

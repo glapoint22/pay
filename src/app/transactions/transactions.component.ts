@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
-import { DividerComponent } from '../divider/divider.component';
 import { DataGridComponent } from '../data-grid/data-grid.component';
 import { ColDef } from '../data-grid/models/col-def';
+import { PageHeaderComponent } from '../page-header/page-header.component';
 
 @Component({
   selector: 'transactions',
   standalone: true,
-  imports: [DividerComponent, DataGridComponent],
+  imports: [PageHeaderComponent, DataGridComponent],
   templateUrl: './transactions.component.html',
   styleUrl: './transactions.component.scss'
 })

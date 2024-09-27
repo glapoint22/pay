@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { DividerComponent } from '../divider/divider.component';
+import { PageHeaderComponent } from "../page-header/page-header.component";
 
 @Component({
   selector: 'over-threshold',
   standalone: true,
-  imports: [DividerComponent],
+  imports: [PageHeaderComponent],
   templateUrl: './over-threshold.component.html',
   styleUrl: './over-threshold.component.scss'
 })

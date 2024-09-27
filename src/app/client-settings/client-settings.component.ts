@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { DividerComponent } from '../divider/divider.component';
+import { PageHeaderComponent } from "../page-header/page-header.component";
 
 @Component({
   selector: 'client-settings',
   standalone: true,
-  imports: [DividerComponent],
+  imports: [PageHeaderComponent],
   templateUrl: './client-settings.component.html',
   styleUrl: './client-settings.component.scss'
 })

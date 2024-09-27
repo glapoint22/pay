@@ -41,5 +41,9 @@ export const routes: Routes = [
     {
         path: 'user-management',
         loadComponent: () => import('./user-management/user-management.component').then(m => m.UserManagementComponent)
+    },
+    {
+        path: 'banners-alerts',
+        loadComponent: () => import('./banners-alerts/banners-alerts.component').then(m => m.BannersAlertsComponent)
     }
 ];
