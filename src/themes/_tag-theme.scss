@@ -1,0 +1,34 @@
+@use './utility';
+
+@mixin theme($theme) {
+    @include utility.theme-variables($theme, (
+        // Success Tag
+        (variable-name: 'success-tag-background', color-key: 320, opacity: 0.16),
+        (variable-name: 'success-tag-foreground', color-key: 140),
+        (variable-name: 'success-tag-border', color-key: 140),
+
+        // Warning Tag
+        (variable-name: 'warning-tag-background', color-key: 340),
+        (variable-name: 'warning-tag-foreground', color-key: 130),
+        (variable-name: 'warning-tag-border', color-key: 130),
+
+        // Identifier Tag
+        (variable-name: 'identifier-tag-background', color-key: 300, opacity: 0.24),
+        (variable-name: 'identifier-tag-foreground', color-key: 0),
+
+        // Action Required Tag
+        (variable-name: 'action-required-tag-background', color-key: 360),
+        (variable-name: 'action-required-tag-foreground', color-key: 380),
+        (variable-name: 'action-required-tag-border', color-key: 400),
+
+        // Pending Tag
+        (variable-name: 'pending-tag-background', color-key: 160),
+        (variable-name: 'pending-tag-foreground', color-key: 0),
+        (variable-name: 'pending-tag-border', color-key: 420),
+
+        // Completed Action Tag
+        (variable-name: 'completed-action-tag-background', color-key: 300, opacity: 0.48),
+        (variable-name: 'completed-action-tag-foreground', color-key: 150),
+        (variable-name: 'completed-action-tag-border', color-key: 30)
+    ));
+}

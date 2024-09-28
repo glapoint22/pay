@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { DataGridComponent } from '../data-grid/data-grid.component';
 import { ColDef } from '../data-grid/models/col-def';
 import { PageHeaderComponent } from '../page-header/page-header.component';
+import { TagComponent } from '../tag/tag.component';
 
 @Component({
   selector: 'transactions',
@@ -14,7 +15,16 @@ export class TransactionsComponent {
   colDefs: ColDef[] = [
     { field: "house", width: 150 },
     { field: "character", width: 300 },
-    { field: "status", width: 200 },
+    {
+      field: "status", width: 200,
+      component(params: any) {
+        if (params.value === 'Lord') {
+          return { component: TagComponent, params: { cssClass: 'success-tag', label: 'Processed', icon: 'checkmark' } }
+        }
+
+        return { component: TagComponent, params: { cssClass: 'warning-tag', label: 'Under Review', icon: 'search' } }
+      }
+    },
     { field: "title", width: 250 }
   ];
 

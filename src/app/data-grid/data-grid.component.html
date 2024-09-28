@@ -29,12 +29,12 @@
     <div class="data-grid-row-container" (scroll)="onRowScroll($event)">
 
         <!-- Rows -->
-        @for (row of rowData(); track $index) {
+        @for (row of rowData(); track row) {
         <div class="data-grid-row">
             <div class="data-grid-columns-container">
 
                 <!-- Row Columns -->
-                @for (column of columnDefs(); track $index) {
+                @for (column of columnDefs(); track column) {
                 <div [style.width.px]="column.width" class="data-grid-column">
                     <div class="data-grid-cell cell-style" [style]="getCellStyle(column, row)">
                         <div class="data-grid-cell-value">

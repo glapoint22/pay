@@ -1,0 +1,74 @@
+// Success
+.success-tag {
+    background-color: var(--success-tag-background);
+    border: 1px solid var(--success-tag-border);
+    color: var(--success-tag-foreground);
+
+    svg {
+        fill: var(--success-tag-foreground);
+        width: 12px;
+        height: 12px;
+    }
+}
+
+// Warning
+.warning-tag {
+    background-color: var(--warning-tag-background);
+    border: 1px solid var(--warning-tag-border);
+    color: var(--warning-tag-foreground);
+
+    svg {
+        fill: var(--warning-tag-foreground);
+        width: 12px;
+        height: 12px;
+    }
+}
+
+
+// Identifier
+.identifier-tag {
+    background-color: var(--identifier-tag-background);
+    color: var(--identifier-tag-foreground);
+}
+
+
+// Action Required
+.action-required-tag {
+    background-color: var(--action-required-tag-background);
+    border: 1px solid var(--action-required-tag-border);
+    color: var(--action-required-tag-foreground);
+
+    svg {
+        fill: var(--action-required-tag-foreground);
+        width: 12px;
+        height: 12px;
+    }
+}
+
+
+// Pending
+.pending-tag {
+    background-color: var(--pending-tag-background);
+    border: 1px solid var(--pending-tag-border);
+    color: var(--pending-tag-foreground);
+
+    svg {
+        fill: var(--pending-tag-foreground);
+        width: 12px;
+        height: 12px;
+    }
+}
+
+
+// Completed-Action
+.completed-action-tag {
+    background-color: var(--completed-action-tag-background);
+    border: 1px solid var(--completed-action-tag-border);
+    color: var(--completed-action-tag-foreground);
+
+    svg {
+        fill: var(--completed-action-tag-foreground);
+        width: 12px;
+        height: 12px;
+    }
+}

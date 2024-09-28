@@ -9,15 +9,4 @@
 @use './styles/modal-popup';
 @use './styles/button-toggle';
 @use './styles/data-grid-resizer-overlay';
-
-.success-tag {
-    background-color: #74BC6229;
-    border: 1px solid #088C6852;
-    color: #088C68;
-    fill: #088C68;
-
-    svg {
-        width: 12px;
-        height: 11px;
-    }
-}
+@use './styles/tags';

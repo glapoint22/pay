@@ -15,6 +15,7 @@
 @use './button-toggle-theme' as button-toggle;
 @use './expansion-panel-theme' as expansion-panel;
 @use './data-grid-theme' as data-grid;
+@use './tag-theme' as tag-theme;
 
 
 @mixin define-theme($theme) {
@@ -35,5 +36,6 @@
         @include button-toggle.theme($theme);
         @include expansion-panel.theme($theme);
         @include data-grid.theme($theme);
+        @include tag-theme.theme($theme);
     }
 }
