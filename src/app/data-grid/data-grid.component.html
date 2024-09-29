@@ -5,17 +5,17 @@
         <div class="data-grid-columns-container">
 
             <!-- Header Columns -->
-            @for (column of columnDefs(); track $index) {
+            @for (column of columnDefs(); track column) {
             <div [style.width.px]="column.width" class="data-grid-column" (click)="sortColumn($index)">
-                <!-- <div class="resizer" (mousedown)="onMouseDown($index)"></div> -->
+                <div class="resizer" (mousedown)="onMouseDown($index)"></div>
                 <div class="data-grid-cell">
                     <div class="data-grid-cell-value">
                         {{column.field | titlecase}}
                     </div>
 
-                    @if(currentSortIndex === $index) {
+                    @if(currentSortIndex() === $index) {
                     <icon class="sort-arrow" name="sort-arrow"
-                        [style.transform]="'rotate(' + (isAsc ? 0 : 180) +'deg'"></icon>
+                        [style.transform]="'rotate(' + (isAsc() ? 0 : 180) +'deg'"></icon>
                     }
 
                 </div>
@@ -29,7 +29,7 @@
     <div class="data-grid-row-container" (scroll)="onRowScroll($event)">
 
         <!-- Rows -->
-        @for (row of rowData(); track row) {
+        @for (row of paginatedRowData(); track row.dataGridUniqueRowId) {
         <div class="data-grid-row">
             <div class="data-grid-columns-container">
 
@@ -55,6 +55,22 @@
         }
 
     </div>
+</div>
+
+<div style="display: flex;">
+    {{start + 1}} to {{end}} of {{rowData().length}} rows
+
+    <!-- <button [disabled]="currentPage() === 0" (click)="firstPage()">First</button> -->
+     <icon name="first-page"></icon>
+    <!-- <button [disabled]="currentPage() === 0" (click)="previousPage()">Previous</button> -->
+    <icon name="previous-page"></icon>
+
+    page {{currentPage() + 1}} of {{totalPages()}}
+
+    <!-- <button [disabled]="currentPage() >= totalPages() - 1" (click)="nextPage()">Next</button> -->
+    <!-- <button [disabled]="currentPage() >= totalPages() - 1" (click)="lastPage()">Last</button> -->
+     <icon name="next-page"></icon>
+    <icon name="last-page"></icon>
 </div>
 
 
