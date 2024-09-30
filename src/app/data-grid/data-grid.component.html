@@ -7,15 +7,15 @@
             <!-- Header Columns -->
             @for (column of columnDefs(); track column) {
             <div [style.width.px]="column.width" class="data-grid-column" (click)="sortColumn($index)">
-                <div class="resizer" (mousedown)="onMouseDown($index)"></div>
+                <div class="resizer" (mousedown)="onColumnResizerMouseDown($index)"></div>
                 <div class="data-grid-cell">
                     <div class="data-grid-cell-value">
                         {{column.field | titlecase}}
                     </div>
 
-                    @if(currentSortIndex() === $index) {
-                    <icon class="sort-arrow" name="sort-arrow"
-                        [style.transform]="'rotate(' + (isAsc() ? 0 : 180) +'deg'"></icon>
+                    @if(currentSortedColumnIndex === $index) {
+                    <icon class="sort-arrow" name="sort-arrow" [style.transform]="'rotate(' + (isAsc ? 0 : 180) +'deg'">
+                    </icon>
                     }
 
                 </div>
@@ -29,7 +29,7 @@
     <div class="data-grid-row-container" (scroll)="onRowScroll($event)">
 
         <!-- Rows -->
-        @for (row of paginatedRowData(); track row.dataGridUniqueRowId) {
+        @for (row of rows(); track row.dataGridUniqueRowId) {
         <div class="data-grid-row">
             <div class="data-grid-columns-container">
 
@@ -39,10 +39,10 @@
                     <div class="data-grid-cell cell-style" [style]="getCellStyle(column, row)">
                         <div class="data-grid-cell-value">
 
-                            @if (getComponent(column, row, column.cellRendererParams); as component) {
-                                <ng-template [createComponent]="component"></ng-template>
+                            @if (getComponentData(column, row); as componentData) {
+                            <ng-template [createComponent]="componentData"></ng-template>
                             } @else {
-                                {{ row[column.field] }}
+                            {{ row[column.field] }}
                             }
 
                         </div>
@@ -57,20 +57,51 @@
     </div>
 </div>
 
-<div style="display: flex;">
-    {{start + 1}} to {{end}} of {{rowData().length}} rows
 
-    <!-- <button [disabled]="currentPage() === 0" (click)="firstPage()">First</button> -->
-     <icon name="first-page"></icon>
-    <!-- <button [disabled]="currentPage() === 0" (click)="previousPage()">Previous</button> -->
-    <icon name="previous-page"></icon>
+<!-- Paging Panel -->
+<div class="paging-panel">
+    <form-field>
+        <dropdown [(ngModel)]="rowsPerPage">
+            @for (pageSize of pageSizes; track pageSize) {
+            <dropdown-item [value]="pageSize">{{pageSize}}</dropdown-item>
+            }
+        </dropdown>
+    </form-field>
 
-    page {{currentPage() + 1}} of {{totalPages()}}
+    <div style="display: flex; align-items: center;">
+        <div class="record-count" [style.textAlign]="totalPages() === 1 ? 'right' : 'center'">
+            Showing records {{startRow + 1}}-{{endRow}} of {{rowData().length}}
+        </div>
 
-    <!-- <button [disabled]="currentPage() >= totalPages() - 1" (click)="nextPage()">Next</button> -->
-    <!-- <button [disabled]="currentPage() >= totalPages() - 1" (click)="lastPage()">Last</button> -->
-     <icon name="next-page"></icon>
-    <icon name="last-page"></icon>
+        @if(totalPages() > 1) {
+        <div class="button-group">
+            <button [disabled]="currentPage() === 0" (click)="setFirstPage()">
+                First
+            </button>
+
+            <button [disabled]="currentPage() === 0" (click)="setPreviousPage()">
+                Previous
+            </button>
+        </div>
+
+
+        <div class="page-count">
+            page {{currentPage() + 1}} of {{totalPages()}}
+        </div>
+
+
+
+        <div class="button-group">
+            <button [disabled]="currentPage() >= totalPages() - 1" (click)="setNextPage()">
+                Next
+            </button>
+
+            <button [disabled]="currentPage() >= totalPages() - 1" (click)="setLastPage()">
+                Last
+            </button>
+        </div>
+        }
+    </div>
 </div>
 
 

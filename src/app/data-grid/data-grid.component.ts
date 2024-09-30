@@ -1,83 +1,83 @@
-import { Component, computed, ElementRef, inject, input, model, Renderer2, signal, viewChild } from '@angular/core';
+import { Component, computed, ElementRef, inject, input, model, OnInit, Renderer2, signal, viewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { OverlayModule } from '@angular/cdk/overlay';
 import { IconComponent } from '../icon/icon.component';
 import { CreateComponentDirective } from '../create-component.directive';
 import { ColDef } from './models/col-def';
-import { ComponentResult } from './models/component';
+import { ComponentData } from './models/component';
 import { ICellParams } from './models/cell-params';
+import { FormFieldComponent } from '../form-field/form-field.component';
+import { DropdownComponent } from '../dropdown/dropdown.component';
+import { FormsModule } from '@angular/forms';
+import { DropdownItemComponent } from '../dropdown-item/dropdown-item.component';
 
 @Component({
   selector: 'data-grid',
   standalone: true,
-  imports: [CommonModule, OverlayModule, IconComponent, CreateComponentDirective],
+  imports: [
+    CommonModule,
+    OverlayModule,
+    IconComponent,
+    CreateComponentDirective,
+    FormFieldComponent,
+    DropdownComponent,
+    DropdownItemComponent,
+    FormsModule
+  ],
   templateUrl: './data-grid.component.html',
   styleUrl: './data-grid.component.scss'
 })
-export class DataGridComponent {
+export class DataGridComponent implements OnInit {
   public columnDefs = model.required<ColDef[]>();
-  public rowData = input<any>();
-  public rowsPerPage = input(10);
-  private rows = computed(() => {
-    return [...this.rowData()].map((row, index) => ({
-      ...row,
-      dataGridUniqueRowId: index + 1
-    }));
-  });
+  public rowData = input.required<any>();
 
+
+  protected rows = computed(() => this.updatePage());
   protected currentPage = signal(0);
-
-
-  protected sortedData = computed(() => {
-    const rows = [...this.rows()];
-    const sortIndex = this.currentSortIndex();
-    const ascending = this.isAsc();
-
-    if (sortIndex !== null) {
-      const column = this.columnDefs()[sortIndex];
-      return rows.sort((a: any, b: any) => {
-        const valueA = a[column.field];
-        const valueB = b[column.field];
-        if (valueA < valueB) {
-          return ascending ? -1 : 1;
-        } else if (valueA > valueB) {
-          return ascending ? 1 : -1;
-        } else {
-          return 0;
-        }
-      });
-    }
-    return rows;
-  });
-
-  protected start: number = 0;
-  protected end: number = 0;
-
-  protected paginatedRowData = computed(() => {
-    this.start = this.currentPage() * this.rowsPerPage();
-    this.end = Math.min(this.start + this.rowsPerPage(), this.rowData().length);
-    return this.sortedData().slice(this.start, this.end); // Use sortedData for pagination
-  });
-
-  protected totalPages = computed(() => {
-    return Math.ceil(this.rowData().length / this.rowsPerPage());
-  });
-
-  protected currentSortIndex = signal<number | null>(null);
-  protected isAsc = signal(true);
-  // protected selectdRow: any;
   protected borderResizerActive = signal(false);
+  protected startRow: number = 0;
+  protected endRow: number = 0;
+  protected totalPages = computed(() => Math.ceil(this.tempRows().length / this.rowsPerPage));
+  protected currentSortedColumnIndex: number | null = null;
+  protected isAsc!: boolean;
+  protected pageSizes: number[] = [5, 10, 20, 50, 100];
+  // protected selectdRow: any;
+
   private renderer = inject(Renderer2);
   private header = viewChild<ElementRef<HTMLElement>>('header');
+  private tempRows = signal<any[]>([]);
+
+  private _rowsPerPage = signal(5);
+
+  protected get rowsPerPage() {
+    return this._rowsPerPage();
+  }
+
+  protected set rowsPerPage(value: number) {
+    this._rowsPerPage.set(value);
+    this.currentPage.set(0);
+  }
 
 
-  protected onRowScroll(event: Event) {
+
+
+  public ngOnInit(): void {
+    this.tempRows.set(this.addId());
+  }
+
+
+
+
+  protected onRowScroll(event: Event): void {
     const scrollLeft = (event.target as HTMLElement).scrollLeft;
 
     this.header()?.nativeElement.setAttribute('style', `left: -${scrollLeft}px`);
   }
 
-  protected onMouseDown(columnIndex: number) {
+
+
+
+  protected onColumnResizerMouseDown(columnIndex: number): void {
     this.borderResizerActive.set(true);
 
     const removeMouseMoveListener = this.renderer.listen('window', 'mousemove', (mousemoveEvent: MouseEvent) => {
@@ -98,59 +98,43 @@ export class DataGridComponent {
 
 
 
+
   protected sortColumn(columnIndex: number): void {
-    if (this.currentSortIndex() === columnIndex) {
-      this.isAsc.update(value => !value);
+    if (this.currentSortedColumnIndex === columnIndex) {
+      this.isAsc = !this.isAsc;
     } else {
-      this.isAsc.set(true);
-      this.currentSortIndex.set(columnIndex);
+      this.isAsc = true;
+      this.currentSortedColumnIndex = columnIndex;
     }
+
+    this.tempRows.set(this.computeSortedData());
   }
 
 
-  // protected onRowClick(row: any): void {
-  //   this.selectdRow = row;
-  // }
 
 
-
-
-  protected getComponent(column: ColDef, row: any, params: any): ComponentResult | null {
+  protected getComponentData(column: ColDef, row: any): ComponentData | null {
     if (column.component) {
-      if (typeof column.component === 'function' && !this.isComponent(column.component)) {
-        const result = column.component(this.getParams(params, row, column));
+      const result = column.component(this.getCellParams(row, column));
 
-        if (result) {
-          return {
-            component: result.component,
-            params: this.getParams(result.params, row, column)
-          };
-        }
-      } else {
-        return { component: column.component, params: this.getParams(params, row, column) };
+      if (result) {
+        return {
+          component: result.component,
+          params: result.params
+        } as ComponentData;
       }
     }
 
     return null;
   }
 
-  private getParams(params: any, row: any, column: any): ICellParams {
-    if (params) {
-      return params;
-    }
 
-    return {
-      value: row[column.field],
-      rowData: row,
-      column: column
-    }
-  }
 
 
   protected getCellStyle(column: ColDef, row: any): any {
     if (column.cellStyle) {
       if (typeof column.cellStyle === 'function') {
-        return column.cellStyle(this.getParams(null, row, column));
+        return column.cellStyle(this.getCellParams(row, column));
       } else {
         return column.cellStyle;
       }
@@ -159,29 +143,87 @@ export class DataGridComponent {
   }
 
 
-  private isComponent(component: any): boolean {
-    return component instanceof Function && component.prototype && component.prototype.constructor === component;
-  }
 
 
-
-  protected firstPage() {
+  protected setFirstPage(): void {
     this.currentPage.set(0);
   }
 
-  protected nextPage() {
-    if (this.currentPage() < this.totalPages() - 1) {
-      this.currentPage.update(value => value + 1);
-    }
+
+
+
+  protected setNextPage(): void {
+    this.currentPage.update(value => value + 1);
   }
 
-  protected previousPage() {
-    if (this.currentPage() > 0) {
-      this.currentPage.update(value => value - 1);
-    }
+
+
+
+  protected setPreviousPage(): void {
+    this.currentPage.update(value => value - 1);
   }
 
-  protected lastPage() {
+
+
+
+  protected setLastPage(): void {
     this.currentPage.set(this.totalPages() - 1);
+  }
+
+  // protected onRowClick(row: any): void {
+  //   this.selectdRow = row;
+  // }
+
+
+  private addId(): any[] {
+    return [...this.rowData()].map((row, index) => ({
+      ...row,
+      dataGridUniqueRowId: index + 1
+    }));
+  }
+
+
+
+
+  private updatePage(): any[] {
+    this.startRow = this.currentPage() * this.rowsPerPage;
+    this.endRow = Math.min(this.startRow + this.rowsPerPage, this.tempRows().length);
+    return this.tempRows().slice(this.startRow, this.endRow);
+  }
+
+
+
+
+  private computeSortedData(): any[] {
+    const rows = [...this.tempRows()];
+    const sortIndex = this.currentSortedColumnIndex;
+    const ascending = this.isAsc;
+
+    if (sortIndex !== null) {
+      const column = this.columnDefs()[sortIndex];
+      return rows.sort((a: any, b: any) => {
+        const valueA = a[column.field];
+        const valueB = b[column.field];
+        if (valueA < valueB) {
+          return ascending ? -1 : 1;
+        } else if (valueA > valueB) {
+          return ascending ? 1 : -1;
+        } else {
+          return 0;
+        }
+      });
+    }
+    return rows;
+  }
+
+
+
+
+  private getCellParams(row: any, column: any): ICellParams {
+    return {
+      value: row[column.field],
+      rowData: row,
+      column: column
+    }
   }
 }

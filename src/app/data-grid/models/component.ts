@@ -4,10 +4,10 @@ import { ICellParams } from "./cell-params";
 export const COMPONENT_PARAMS = new InjectionToken('ComponentParams');
 
 export interface ComponentFunc {
-    (params: ICellParams): ComponentResult | undefined
+    (params: ICellParams): ComponentData
 }
 
-export interface ComponentResult {
-    component?: any;
+export interface ComponentData {
+    component: any;
     params?: any;
 }

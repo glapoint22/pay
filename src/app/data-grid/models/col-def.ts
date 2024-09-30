@@ -4,7 +4,6 @@ import { ComponentFunc } from "./component";
 export interface ColDef {
   field: string;
   width: number;
-  component?: unknown | ComponentFunc;
-  cellRendererParams?: any;
+  component?: ComponentFunc;
   cellStyle?: CellStyle | CellStyleFunc;
 }

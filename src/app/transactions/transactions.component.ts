@@ -3,6 +3,8 @@ import { DataGridComponent } from '../data-grid/data-grid.component';
 import { ColDef } from '../data-grid/models/col-def';
 import { PageHeaderComponent } from '../page-header/page-header.component';
 import { TagComponent } from '../tag/tag.component';
+import { ICellParams } from '../data-grid/models/cell-params';
+import { TagParams } from '../tag/models/tag-params';
 
 @Component({
   selector: 'transactions',
@@ -17,12 +19,12 @@ export class TransactionsComponent {
     { field: "character", width: 300 },
     {
       field: "status", width: 200,
-      component(params: any) {
+      component(params: ICellParams) {
         if (params.value === 'Lord') {
-          return { component: TagComponent, params: { cssClass: 'success-tag', label: 'Processed', icon: 'checkmark' } }
+          return { component: TagComponent, params: { cssClass: 'success-tag', label: 'Processed', icon: 'checkmark' } as TagParams }
         }
 
-        return { component: TagComponent, params: { cssClass: 'warning-tag', label: 'Under Review', icon: 'search' } }
+        return { component: TagComponent, params: { cssClass: 'warning-tag', label: 'Under Review', icon: 'search' } as TagParams }
       }
     },
     { field: "title", width: 250 }

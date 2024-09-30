@@ -2,6 +2,7 @@ import { Component, inject, model } from '@angular/core';
 import { IconComponent } from "../icon/icon.component";
 import { CommonModule } from '@angular/common';
 import { COMPONENT_PARAMS } from '../data-grid/models/component';
+import { TagParams } from './models/tag-params';
 
 @Component({
   selector: 'tag',
@@ -14,8 +15,7 @@ export class TagComponent {
   public cssClass = model<string>();
   public label = model<string>();
   public icon = model<string>();
-
-  private params = inject(COMPONENT_PARAMS, { optional: true }) as any;
+  private params: TagParams = inject(COMPONENT_PARAMS, { optional: true }) as TagParams;
 
   ngOnInit() {
     if (this.params) {
