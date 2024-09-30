@@ -60,18 +60,30 @@
 
 <!-- Paging Panel -->
 <div class="paging-panel">
-    <form-field>
-        <dropdown [(ngModel)]="rowsPerPage">
-            @for (pageSize of pageSizes; track pageSize) {
-            <dropdown-item [value]="pageSize">{{pageSize}}</dropdown-item>
-            }
-        </dropdown>
-    </form-field>
+    <div class="page-size-container">
+        <div class="page-size-label paging-label">Page Size:</div>
+
+
+        <form-field>
+            <dropdown [(ngModel)]="rowsPerPage">
+                @for (pageSize of pageSizes; track pageSize) {
+                <dropdown-item [value]="pageSize">{{pageSize}}</dropdown-item>
+                }
+            </dropdown>
+        </form-field>
+    </div>
+
 
     <div style="display: flex; align-items: center;">
-        <div class="record-count" [style.textAlign]="totalPages() === 1 ? 'right' : 'center'">
+        <!-- <div class="page-count paging-label">
+            page {{currentPage() + 1}} of {{totalPages()}}
+        </div> -->
+
+        <div class="paging-label">
             Showing records {{startRow + 1}}-{{endRow}} of {{rowData().length}}
         </div>
+
+        
 
         @if(totalPages() > 1) {
         <div class="button-group">
@@ -82,16 +94,7 @@
             <button [disabled]="currentPage() === 0" (click)="setPreviousPage()">
                 Previous
             </button>
-        </div>
 
-
-        <div class="page-count">
-            page {{currentPage() + 1}} of {{totalPages()}}
-        </div>
-
-
-
-        <div class="button-group">
             <button [disabled]="currentPage() >= totalPages() - 1" (click)="setNextPage()">
                 Next
             </button>
@@ -100,6 +103,13 @@
                 Last
             </button>
         </div>
+
+
+
+
+
+
+
         }
     </div>
 </div>

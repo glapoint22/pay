@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ClientSettingsComponent } from './client-settings.component';
+import { ReconciliationComponent } from './reconciliation.component';
 
-describe('ClientSettingsComponent', () => {
-  let component: ClientSettingsComponent;
-  let fixture: ComponentFixture<ClientSettingsComponent>;
+describe('ReconciliationComponent', () => {
+  let component: ReconciliationComponent;
+  let fixture: ComponentFixture<ReconciliationComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ClientSettingsComponent]
+      imports: [ReconciliationComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(ClientSettingsComponent);
+    fixture = TestBed.createComponent(ReconciliationComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

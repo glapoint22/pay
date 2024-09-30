@@ -5,10 +5,20 @@
         (variable-name: 'data-grid-header-background', color-key: 180),
         (variable-name: 'data-grid-header-foreground', color-key: 290),
         (variable-name: 'data-grid-header-border-top', color-key: 300),
-        (variable-name: 'data-grid-row', color-key: 300, opacity: 0.48),
+        (variable-name: 'data-grid-row-border', color-key: 300, opacity: 0.48),
+        (variable-name: 'data-grid-row', color-key: 1000),
         (variable-name: 'data-grid-sort-arrow', color-key: 30),
         (variable-name: 'data-grid-cell', color-key: 0),
         (variable-name: 'data-grid-row-hover', color-key: 300, opacity: 0.05),
-        (variable-name: 'data-grid-resizer', color-key: 30)
+        (variable-name: 'data-grid-resizer', color-key: 30),
+        (variable-name: 'data-grid-button-border', color-key: 90),
+        (variable-name: 'data-grid-button-label', color-key: 15),
+        (variable-name: 'data-grid-button-background-hover', color-key: 97),
+        (variable-name: 'data-grid-button-label-hover', color-key: 200),
+        (variable-name: 'data-grid-button-background-active', color-key: 160),
+        (variable-name: 'data-grid-button-label-active', color-key: 290),
+        (variable-name: 'data-grid-button-border-disabled', color-key: 0, opacity: 0.1),
+        (variable-name: 'data-grid-button-label-disabled', color-key: 0, opacity: 0.1),
+        (variable-name: 'data-grid-paging-label', color-key: 0),
     ));
 }

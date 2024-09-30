@@ -3,21 +3,20 @@
 }
 
 
-
 .data-grid-base {
     display: flex;
     flex-direction: column;
     width: 100%;
     height: 100%;
     overflow: hidden;
-    border-top: 1px solid var(--data-grid-row);
+    border-top: 1px solid var(--data-grid-row-border);
     background: var(--data-grid-header-background);
 }
 
 .data-grid-header {
     width: 100%;
     height: 40px;
-    
+
     position: relative;
     font-weight: 600;
     color: var(--data-grid-header-foreground);
@@ -33,7 +32,7 @@
     overflow: auto;
     flex: 1;
     border-top: 1px solid var(--data-grid-header-border-top);
-    background: white;
+    background: var(--data-grid-row);
 }
 
 .data-grid-columns-container {
@@ -45,7 +44,7 @@
 .data-grid-row {
     width: fit-content;
     height: 42px;
-    border-bottom: 1px solid var(--data-grid-row);
+    border-bottom: 1px solid var(--data-grid-row-border);
 
     &:hover {
         background: var(--data-grid-row-hover);
@@ -116,55 +115,73 @@
     font-size: 14px;
 
     button {
-        background: white;
-        border: 1px solid #D5E0E8;
+        background: transparent;
+        border: 1px solid var(--data-grid-button-border);
         height: 27px;
-        color: #666666;
+        color: var(--data-grid-button-label);
         font-size: 14px;
         font-family: 'Inter', sans-serif;
         cursor: pointer;
 
         &:hover:not(:disabled) {
-            background: #fafafa;
-            color: #333333;
+            background: var(--data-grid-button-background-hover);
+            color: var(--data-grid-button-label-hover);
         }
 
         &:active:not(:disabled) {
-            background: #f1f1f1;
-            color: #222222;
+            background: var(--data-grid-button-background-active);
+            color: var(--data-grid-button-label-active);
         }
 
         &:disabled {
-            border-color: rgba(0, 0, 0, 0.1);
-            color: rgba(0, 0, 0, 0.1);
+            border-color: var(--data-grid-button-border-disabled);
+            color: var(--data-grid-button-label-disabled);
             cursor: default;
         }
     }
 
     .button-group {
+        margin-left: 20px;
+
         button:first-child {
             border-top-left-radius: 5px;
             border-bottom-left-radius: 5px;
-            border-right: none;
         }
 
         button:last-child {
             border-top-right-radius: 5px;
             border-bottom-right-radius: 5px;
         }
+
+        button:not(:last-child) {
+            border-right: none;
+        }
     }
 }
 
-.record-count {
-    color: black;
-    font-weight: 500;
-    width: 240px;
-}
+
 
 
 .page-count {
     width: 115px;
     text-align: center;
-    color: black;
+}
+
+.page-size-container {
+    width: 170px;
+    display: flex;
+    align-items: center;
+}
+
+.page-size-label {
+    margin-right: 10px;
+}
+
+form-field {
+    flex: 1;
+}
+
+.paging-label {
+    color: var(--data-grid-paging-label);
     font-weight: 500;
 }

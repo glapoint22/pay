@@ -23,8 +23,8 @@ export const routes: Routes = [
         loadComponent: () => import('./outbound-payments/outbound-payments.component').then(m => m.OutboundPaymentsComponent)
     },
     {
-        path: 'balances',
-        loadComponent: () => import('./balances/balances.component').then(m => m.BalancesComponent)
+        path: 'reconciliation',
+        loadComponent: () => import('./reconciliation/reconciliation.component').then(m => m.ReconciliationComponent)
     },
     {
         path: 'over-threshold',
@@ -33,10 +33,6 @@ export const routes: Routes = [
     {
         path: 'payors',
         loadComponent: () => import('./payors/payors.component').then(m => m.PayorsComponent)
-    },
-    {
-        path: 'client-settings',
-        loadComponent: () => import('./client-settings/client-settings.component').then(m => m.ClientSettingsComponent)
     },
     {
         path: 'user-management',

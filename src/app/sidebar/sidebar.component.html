@@ -34,24 +34,16 @@
     </a>
 
 
-    <!-- Balances -->
-    <a routerLink="balances" class="nav-item" routerLinkActive="active-link" (dragstart)="$event.preventDefault()">
-        <icon class="icon-balances" name="balances"/>
-        <div class="nav-text">Balances</div>
+    <!-- Reconciliation -->
+    <a routerLink="reconciliation" class="nav-item" routerLinkActive="active-link" (dragstart)="$event.preventDefault()">
+        <icon class="icon-reconciliation" name="checked-list"/>
+        <div class="nav-text">Reconciliation</div>
     </a>
 
     <!-- Payors -->
     <a routerLink="payors" class="nav-item" routerLinkActive="active-link" (dragstart)="$event.preventDefault()">
         <icon class="icon-users" name="users" />
         <div class="nav-text">Payors</div>
-    </a>
-
-
-    <!-- Client Settings -->
-    <a routerLink="client-settings" class="nav-item" routerLinkActive="active-link"
-        (dragstart)="$event.preventDefault()">
-        <icon class="icon-settings" name="settings" />
-        <div class="nav-text">Client Settings</div>
     </a>
 </nav>
 

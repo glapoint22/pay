@@ -62,7 +62,7 @@ export class DataGridComponent implements OnInit {
 
 
   public ngOnInit(): void {
-    this.tempRows.set(this.addId());
+    this.tempRows.set(this.generateUniqueRowIds());
   }
 
 
@@ -175,7 +175,7 @@ export class DataGridComponent implements OnInit {
   // }
 
 
-  private addId(): any[] {
+  private generateUniqueRowIds(): any[] {
     return [...this.rowData()].map((row, index) => ({
       ...row,
       dataGridUniqueRowId: index + 1
