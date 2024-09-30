@@ -30,7 +30,7 @@
 
         <!-- Rows -->
         @for (row of rows(); track row.dataGridUniqueRowId) {
-        <div class="data-grid-row">
+        <div class="data-grid-row" (click)="onRowClick(row)" [ngClass]="{'selected-row': row === selectdRow}">
             <div class="data-grid-columns-container">
 
                 <!-- Row Columns -->
@@ -61,7 +61,7 @@
 <!-- Paging Panel -->
 <div class="paging-panel">
     <div class="page-size-container">
-        <div class="page-size-label paging-label">Page Size:</div>
+        <div class="page-size-label paging-label">Rows per Page:</div>
 
 
         <form-field>
@@ -73,17 +73,18 @@
         </form-field>
     </div>
 
+    <div class="page-count paging-label">
+        page {{currentPage() + 1}} of {{totalPages()}}
+    </div>
 
     <div style="display: flex; align-items: center;">
-        <!-- <div class="page-count paging-label">
-            page {{currentPage() + 1}} of {{totalPages()}}
-        </div> -->
+
 
         <div class="paging-label">
             Showing records {{startRow + 1}}-{{endRow}} of {{rowData().length}}
         </div>
 
-        
+
 
         @if(totalPages() > 1) {
         <div class="button-group">
@@ -103,13 +104,6 @@
                 Last
             </button>
         </div>
-
-
-
-
-
-
-
         }
     </div>
 </div>

@@ -40,14 +40,14 @@ export class DataGridComponent implements OnInit {
   protected totalPages = computed(() => Math.ceil(this.tempRows().length / this.rowsPerPage));
   protected currentSortedColumnIndex: number | null = null;
   protected isAsc!: boolean;
-  protected pageSizes: number[] = [5, 10, 20, 50, 100];
-  // protected selectdRow: any;
+  protected pageSizes: number[] = [10, 20, 50, 100];
+  protected selectdRow: any;
 
   private renderer = inject(Renderer2);
   private header = viewChild<ElementRef<HTMLElement>>('header');
   private tempRows = signal<any[]>([]);
 
-  private _rowsPerPage = signal(5);
+  private _rowsPerPage = signal(50);
 
   protected get rowsPerPage() {
     return this._rowsPerPage();
@@ -170,9 +170,9 @@ export class DataGridComponent implements OnInit {
     this.currentPage.set(this.totalPages() - 1);
   }
 
-  // protected onRowClick(row: any): void {
-  //   this.selectdRow = row;
-  // }
+  protected onRowClick(row: any): void {
+    this.selectdRow = row;
+  }
 
 
   private generateUniqueRowIds(): any[] {

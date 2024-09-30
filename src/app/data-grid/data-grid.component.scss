@@ -45,8 +45,9 @@
     width: fit-content;
     height: 42px;
     border-bottom: 1px solid var(--data-grid-row-border);
+    cursor: pointer;
 
-    &:hover {
+    &:hover:not(.selected-row) {
         background: var(--data-grid-row-hover);
     }
 }
@@ -168,7 +169,7 @@
 }
 
 .page-size-container {
-    width: 170px;
+    width: 180px;
     display: flex;
     align-items: center;
 }
@@ -184,4 +185,10 @@ form-field {
 .paging-label {
     color: var(--data-grid-paging-label);
     font-weight: 500;
+}
+
+
+.selected-row {
+    background: var(--data-grid-row-selected);
+    cursor: default;
 }
