@@ -1,4 +1,4 @@
-<div class="warn-form-field-error-color">
+<!-- <div class="warn-form-field-error-color"> -->
 
     <div class="form-field" [tabindex]="!inputField() && !isDisabled()? 0 : -1"
         [ngClass]="{'form-field-selected': selected, 'form-field-disabled': isDisabled(), 'form-field-error': formFieldError()}"
@@ -39,4 +39,4 @@
     @if (formFieldError()) {
     <ng-content select="form-field-error"></ng-content>
     }
-</div>
+<!-- </div> -->

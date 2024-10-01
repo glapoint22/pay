@@ -1,0 +1,66 @@
+.filter {
+    display: flex;
+    align-items: center;
+}
+
+.expand-icon {
+    width: 12px;
+    height: 7px;
+    margin-left: 10px;
+    fill: #666666;
+}
+
+.close-icon {
+    width: 10px;
+    height: 10px;
+    margin-left: 10px;
+    fill: #666666;
+    cursor: pointer;
+
+    &:hover {
+        fill: #000000;
+    }
+}
+
+.filter-name {
+    padding: 5px 10px;
+    border: 1px solid #D5E0E8;
+    border-radius: 5px;
+    font-weight: 500;
+    font-size: 14px;
+    color: #666666;
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.filter-value {
+    border-left: 1px dashed #E0D193;
+    padding: 5px 10px;
+    border-top: 1px solid #E0D193;
+    border-bottom: 1px solid #E0D193;
+    border-right: 1px solid #E0D193;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    background: #FFF8E4;
+    display: flex;
+    align-items: center;
+}
+
+.icon-container {
+    margin-right: 5px;
+    fill: #666666;
+}
+
+.has-value {
+    border-right: none;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-color: #E0D193;
+    background: #FFF8E4;
+}
+
+.has-value-foreground {
+    fill: #000000;
+    color: #000000;
+}

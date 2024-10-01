@@ -1,0 +1,28 @@
+.filter-popup {
+    background: #FAFAFA;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 16px 0px #00000020;
+    display: inline-block;
+    width: 100%;
+}
+
+.filter-popup-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.filter-popup-title {
+    color: #000000;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+
+icon {
+    width: 10px;
+    height: 10px;
+    fill: #000000;
+}

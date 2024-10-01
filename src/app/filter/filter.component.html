@@ -1,0 +1,25 @@
+<div class="filter" (click)="onClick()">
+
+    <!-- Filter Name -->
+    <div class="filter-name" [class]="value ? 'has-value has-value-foreground': null">
+        @if(icon()) {
+        <div class="icon-container" [class]="value ? 'has-value-foreground' : null">
+            <ng-content select="icon" />
+        </div>
+        }
+
+        <ng-content />
+
+        <icon class="expand-icon" name="expand"></icon>
+    </div>
+
+    <!-- Filter Value -->
+    @if(value) {
+    <div class="filter-value">
+        <span>{{value}}</span>
+        <icon class="close-icon" name="close"></icon>
+    </div>
+    }
+
+
+</div>

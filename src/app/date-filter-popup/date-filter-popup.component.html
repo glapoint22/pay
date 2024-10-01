@@ -1,0 +1,11 @@
+<filter-popup title="Date of Payment">
+    <form-field>
+        <dropdown [(ngModel)]="selectedOption">
+            @for (option of options; track option.value) {
+            <dropdown-item [value]="option.label">{{option.label}}</dropdown-item>
+            }
+        </dropdown>
+    </form-field>
+
+    <button class="button-apply">Apply</button>
+</filter-popup>
