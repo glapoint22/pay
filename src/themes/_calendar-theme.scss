@@ -1,0 +1,19 @@
+@use './utility';
+
+@mixin theme($theme) {
+    @include utility.theme-variables($theme, (
+        (variable-name: 'calendar-text', color-key: 1000),
+        (variable-name: 'calendar-header-background', color-key: 30),
+        (variable-name: 'calendar-header-arrow-hover', color-key: 60),
+        (variable-name: 'calendar-header-arrow-active', color-key: 60),
+        (variable-name: 'calendar-border', color-key: 30, opacity: 0.5),
+        (variable-name: 'calendar-background', color-key: 1000),
+        (variable-name: 'calendar-header-today-hover', color-key: 60, opacity: 0.1),
+        (variable-name: 'calendar-header-today-active', color-key: 60, opacity: 0.3),
+        (variable-name: 'calendar-selected-item', color-key: 30),
+        (variable-name: 'calendar-grid-item-hover-background', color-key: 0, opacity: 0.08),
+        (variable-name: 'calendar-grid-item-active-background', color-key: 0, opacity: 0.12),
+        (variable-name: 'calendar-grid-item-disabled', color-key: 0, opacity: 0.38),
+        (variable-name: 'calendar-year-arrow', color-key: 30)
+    ));
+}

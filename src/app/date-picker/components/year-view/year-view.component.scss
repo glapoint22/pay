@@ -1,0 +1,41 @@
+.calendar-grid {
+    grid-template-columns: repeat(4, 1fr);
+    height: 200px;
+}
+
+.calendar-grid-item::before {
+    width: 40px;
+    height: 40px;
+}
+
+.year-view-button-container {
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+
+
+
+svg {
+    fill: var(--calendar-year-arrow);
+    cursor: pointer;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+   
+    &:hover {
+        background-color: var(--calendar-grid-item-hover-background);
+    }
+
+    &:active {
+        background-color: var(--calendar-grid-item-active-background);
+    }
+}
+
+
+.date-range {
+    font-weight: bold;
+    font-style: italic;
+}

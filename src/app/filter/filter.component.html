@@ -1,9 +1,9 @@
-<div class="filter" (click)="onClick()">
+<div class="filter">
 
     <!-- Filter Name -->
-    <div class="filter-name" [class]="value ? 'has-value has-value-foreground': null">
+    <div class="filter-name" [class]="value() ? 'has-value has-value-foreground': null">
         @if(icon()) {
-        <div class="icon-container" [class]="value ? 'has-value-foreground' : null">
+        <div class="icon-container" [class]="value() ? 'has-value-foreground' : null">
             <ng-content select="icon" />
         </div>
         }
@@ -14,12 +14,11 @@
     </div>
 
     <!-- Filter Value -->
-    @if(value) {
+    @if(value()) {
     <div class="filter-value">
-        <span>{{value}}</span>
-        <icon class="close-icon" name="close"></icon>
+        <span>{{value()}}</span>
+        <icon class="close-icon" name="close" (click)="clear(); $event.stopPropagation()"></icon>
     </div>
     }
-
 
 </div>

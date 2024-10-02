@@ -1,0 +1,93 @@
+.calendar-base {
+    width: 251px;
+    box-shadow: 3px 3px 7px 1px rgba(0, 0, 0, 0.14);
+    background: var(--calendar-background);
+    outline: none;
+    border: 1px solid var(--calendar-border);
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.calendar-header {
+    width: 100%;
+    background: var(--calendar-header-background);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    color: var(--calendar-text);
+    height: 40px;
+    border-top-right-radius: 4px;
+    border-top-left-radius: 4px;
+}
+
+.calendar-header-month {
+    display: flex;
+    align-items: center;
+    width: 75px;
+}
+
+.calendar-header-today {
+    display: flex;
+    align-items: center;
+    width: 75px;
+    height: 25px;
+    border: 1px solid var(--calendar-text);
+    fill: var(--calendar-text);
+    border-radius: 10px;
+    justify-content: center;
+    cursor: pointer;
+
+    div {
+        margin-left: 5px;
+    }
+
+    &:hover {
+        background: var(--calendar-header-today-hover);
+    }
+
+    &:active {
+        background: var(--calendar-header-today-active);
+    }
+}
+
+
+.calendar-header-year {
+    display: flex;
+    align-items: center;
+    width: 80px;
+}
+
+.arrow-icon-container {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    fill: var(--calendar-text);
+
+    &:hover {
+        fill: var(--calendar-header-arrow-hover);
+    }
+
+    &:active {
+        fill: var(--calendar-header-arrow-active);
+    }
+}
+
+.header-text-button {
+    cursor: pointer;
+    width: 32px;
+    text-align: center;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+.selected-page {
+    text-decoration: underline;
+}
+
+
+.calendar-view {
+    padding: 10px;
+    height: 244px;
+}

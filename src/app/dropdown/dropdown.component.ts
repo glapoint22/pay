@@ -23,6 +23,7 @@ export class DropdownComponent implements AfterViewInit, ControlValueAccessor {
   public disabled = input(false, { transform: booleanAttribute });
   protected selectedValue!: string;
   protected formField = inject(FormFieldComponent);
+  protected label!: string;
   private popupService = inject(PopupService);
   private dropdownListTemplate = viewChild<TemplateRef<any>>('dropdownListTemplate');
   private dropdownItems = contentChildren(DropdownItemComponent);
@@ -65,6 +66,7 @@ export class DropdownComponent implements AfterViewInit, ControlValueAccessor {
       dropdownItem.setSelected(dropdownItem === item);
       if (dropdownItem === item) {
         this.selectedDropdownItemIndex = this.getSelectedDropdownItemIndex(index);
+        this.label = dropdownItem.element()?.nativeElement.textContent!;
       }
     });
 
@@ -159,6 +161,7 @@ export class DropdownComponent implements AfterViewInit, ControlValueAccessor {
       if (dropdownItem.value() === value) {
         dropdownItem.setSelected(true);
         this.selectedDropdownItemIndex = this.getSelectedDropdownItemIndex(index);
+        this.label = dropdownItem.element()?.nativeElement.textContent!;
       } else {
         dropdownItem.setSelected(false);
       }
