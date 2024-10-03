@@ -11,8 +11,10 @@ export class PopupCloseDirective {
 
   @HostListener('click')
   onClick(): void {
-    if (this.popupRef) {
-      this.popupRef.close(this.popupClose());
-    }
+    setTimeout(() => {
+      if (this.popupRef) {
+        this.popupRef.close(this.popupClose());
+      }
+    });
   }
 }

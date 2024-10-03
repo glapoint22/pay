@@ -21,7 +21,7 @@ export class FilterComponent<T> {
   private elementRef = inject(ElementRef);
   private isPopupOpen!: boolean;
 
-  public togglePopupFilter(popupFilter: Type<T>, data: any): void {
+  public togglePopupFilter(popupFilter: Type<T>, data?: any): void {
     if (this.isPopupOpen) {
       this.popupRef.close();
       return;
@@ -38,8 +38,11 @@ export class FilterComponent<T> {
     const onCloseSubscription = this.popupRef
       .onClose()
       .subscribe((value: any) => {
-        if (value)
+        if (value) {
+          this.setValue(value);
           this.onChange.emit(value);
+        }
+          
 
         this.isPopupOpen = false;
         onCloseSubscription.unsubscribe();

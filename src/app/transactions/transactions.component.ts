@@ -6,6 +6,8 @@ import { TagComponent } from '../tag/tag.component';
 import { ICellParams } from '../data-grid/models/cell-params';
 import { TagParams } from '../tag/models/tag-params';
 import { DateFilterComponent } from '../date-filter/date-filter.component';
+import { FiltersGroupComponent } from '../filters-group/filters-group.component';
+import { MultiFilterComponent } from '../multi-filter/multi-filter.component';
 
 @Component({
   selector: 'transactions',
@@ -13,7 +15,9 @@ import { DateFilterComponent } from '../date-filter/date-filter.component';
   imports: [
     PageHeaderComponent,
     DataGridComponent,
-    DateFilterComponent
+    DateFilterComponent,
+    MultiFilterComponent,
+    FiltersGroupComponent
   ],
   templateUrl: './transactions.component.html',
   styleUrl: './transactions.component.scss'

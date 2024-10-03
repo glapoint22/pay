@@ -1,8 +1,14 @@
 <div class="page">
     <page-header>Transactions</page-header>
-    <date-filter></date-filter>
 
-    
+    <filters-group style="max-width: 1500px;">
+        <date-filter></date-filter>
+        <multi-filter></multi-filter>
+        
+    </filters-group>
+
+
+
     <data-grid style="max-width: 919px;
     height: 336px;" [columnDefs]="colDefs" [rowData]="rowData">
     </data-grid>

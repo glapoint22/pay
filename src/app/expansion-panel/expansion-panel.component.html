@@ -1,13 +1,11 @@
-<!-- <div class="panel"> -->
-    <div class="expansion-panel" (click)="toggle()">
-        <div class="expansion-panel-arrow-title-container">
-            <icon name="expand" [width]="13" [height]="8" class="expansion-panel-arrow" [class.expanded]="expanded"></icon>
-            <div class="expansion-panel-title">{{title()}}</div>
-        </div>
-        <div [ngClass]="valueClass()">{{value()}}</div>
+<div class="expansion-panel" (click)="toggle()">
+    <div class="expansion-panel-arrow-title-container">
+        <icon name="expand" class="expansion-panel-arrow" [class.expanded]="expanded"></icon>
+        <div class="expansion-panel-title">{{title()}}</div>
+    </div>
+    <div [ngClass]="valueClass()">{{value()}}</div>
 
-    </div>
-    <div #panelContent class="expansion-panel-content">
-        <ng-content></ng-content>
-    </div>
-<!-- </div> -->
+</div>
+<div #panelContent class="expansion-panel-content">
+    <ng-content></ng-content>
+</div>

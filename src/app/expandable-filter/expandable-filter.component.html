@@ -1,0 +1,13 @@
+<div class="expansion-panel" (click)="toggle()" [class]="expanded ? 'foo': null">
+    <div>Card Last 4</div>
+    <icon class="add-icon" [name]="expanded ? 'close' : 'add'"></icon>
+
+</div>
+<div #panelContent class="expansion-panel-content" [class]="expanded ? 'expanded' : null">
+    <ng-content></ng-content>
+
+    <div style="width: 100%; display: flex; align-items: center; justify-content: space-between; margin-top: 10px;">
+        <div style="font-size: 12px; font-weight: 500; color: #F26060; text-decoration: underline; cursor: pointer;">Clear</div>
+        <div style="font-size: 12px; font-weight: 500; color: #094A82; text-decoration: underline; cursor: pointer;">Confirm</div>
+    </div>
+</div>
