@@ -165,3 +165,22 @@ $active-amount: 6;
         cursor: default;
     }
 }
+
+
+.button-icon {
+    background: transparent;
+    padding: 4px;
+    border: 0;
+    cursor: pointer;
+    fill: #666666;
+    border-radius: 50%;
+
+    &:hover {
+        background: rgb(0, 0, 0, 0.05);
+        
+    }
+
+    &:active {
+        background: rgb(0, 0, 0, 0.1);
+    }
+}

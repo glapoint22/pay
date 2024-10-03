@@ -2,7 +2,8 @@ import { Component, viewChild } from '@angular/core';
 import { FilterComponent } from '../filter/filter.component';
 import { IconComponent } from '../icon/icon.component';
 import { DatePipe } from '@angular/common';
-import { DateRangeOption } from '../date-filter-popup/models/date-range-option';
+import { DateRangeOption } from '../models/date-range-option';
+import { DateFilterData } from '../models/date-filter-data';
 
 @Component({
   selector: 'date-filter',
@@ -18,7 +19,7 @@ export class DateFilterComponent {
   private filter = viewChild(FilterComponent);
   protected fromDate!: Date;
   protected toDate!: Date;
-  protected dateRangeOption!: number;
+  protected dateRangeOption!: DateRangeOption;
 
   protected async onClick(): Promise<void> {
     const { DateFilterPopupComponent } = await import('../date-filter-popup/date-filter-popup.component');
@@ -27,31 +28,34 @@ export class DateFilterComponent {
       fromDate: this.fromDate,
       toDate: this.toDate,
       dateRangeOption: this.dateRangeOption
-    });
+    } as DateFilterData);
   }
 
-  protected onChange(value: any): void {
-    if (!value) {
-      
+  protected onChange(dateFilterData: DateFilterData): void {
+    if (!dateFilterData) {
+      this.fromDate = new Date();
+      this.toDate = new Date();
+      this.dateRangeOption = DateRangeOption.SingleDate;
       return;
     }
 
-    this.fromDate = value.fromDate;
-    this.toDate = value.toDate;
-    this.dateRangeOption = value.selectedOption;
-
-    let result: string | null;
     const datePipe = new DatePipe('en-US');
+
+    this.fromDate = dateFilterData.fromDate;
+    this.toDate = dateFilterData.toDate;
+    this.dateRangeOption = dateFilterData.dateRangeOption;
+
+    let value: string | null;
 
     if (this.dateRangeOption === DateRangeOption.DateRange) {
       const startFormatted = datePipe.transform(this.fromDate, 'MMM d');
       const endFormatted = datePipe.transform(this.toDate, 'MMM d, y');
 
-      result = `${startFormatted} - ${endFormatted}`;
+      value = `${startFormatted} - ${endFormatted}`;
     } else {
-      result = datePipe.transform(value.fromDate, 'MMM d, y');
+      value = datePipe.transform(dateFilterData.fromDate, 'MMM d, y');
     }
 
-    this.filter()?.setValue(result);
+    this.filter()?.setValue(value);
   }
 }

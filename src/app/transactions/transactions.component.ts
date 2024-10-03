@@ -5,11 +5,16 @@ import { PageHeaderComponent } from '../page-header/page-header.component';
 import { TagComponent } from '../tag/tag.component';
 import { ICellParams } from '../data-grid/models/cell-params';
 import { TagParams } from '../tag/models/tag-params';
+import { DateFilterComponent } from '../date-filter/date-filter.component';
 
 @Component({
   selector: 'transactions',
   standalone: true,
-  imports: [PageHeaderComponent, DataGridComponent],
+  imports: [
+    PageHeaderComponent,
+    DataGridComponent,
+    DateFilterComponent
+  ],
   templateUrl: './transactions.component.html',
   styleUrl: './transactions.component.scss'
 })

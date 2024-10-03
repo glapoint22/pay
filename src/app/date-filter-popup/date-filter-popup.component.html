@@ -1,5 +1,5 @@
 <filter-popup title="Date of Payment">
-    <form-field>
+    <form-field class="dropdown">
         <dropdown [(ngModel)]="dateRangeOption">
             @for (option of options; track option) {
             <dropdown-item [value]="option.value">{{option.key}}</dropdown-item>
@@ -7,25 +7,24 @@
         </dropdown>
     </form-field>
 
-    <div style="display: flex; align-items: center;  width: 100%;">
-        <form-field>
+    <div class="date-input-container">
+        <form-field class="date-input">
             <input #fromDateInput="datePicker" inputField datePicker [(ngModel)]="fromDate">
-            <button prefix (click)="fromDateInput.toggleCalendar()">
-                i
+            <button class="button-icon" prefix (click)="fromDateInput.toggleCalendar()">
+                <icon class="calendar-icon" name="calendar"></icon>
             </button>
         </form-field>
 
         @if(dateRangeOption === DateRangeOption.DateRange) {
-            <span>and</span>
+            <span class="and">and</span>
 
-        <form-field>
+        <form-field class="date-input">
             <input #toDateInput="datePicker" inputField datePicker [(ngModel)]="toDate">
-            <button prefix (click)="toDateInput.toggleCalendar()">
-                i
+            <button class="button-icon" prefix (click)="toDateInput.toggleCalendar()">
+                <icon class="calendar-icon" name="calendar"></icon>
             </button>
         </form-field>
         }
-        
     </div>
     
 

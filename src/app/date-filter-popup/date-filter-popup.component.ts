@@ -10,7 +10,9 @@ import { DatePickerDirective } from '../date-picker/directives/date-picker.direc
 import { POPUP_DATA } from '../types/popup-data';
 import { KeyValue } from '@angular/common';
 import { PrefixDirective } from '../prefix/prefix.directive';
-import { DateRangeOption } from './models/date-range-option';
+import { DateRangeOption } from '../models/date-range-option';
+import { IconComponent } from '../icon/icon.component';
+import { DateFilterData } from '../models/date-filter-data';
 
 
 
@@ -26,6 +28,7 @@ import { DateRangeOption } from './models/date-range-option';
     PopupCloseDirective,
     InputFieldDirective,
     DatePickerDirective,
+    IconComponent,
     PrefixDirective
   ],
   templateUrl: './date-filter-popup.component.html',
@@ -46,25 +49,23 @@ export class DateFilterPopupComponent {
   ]
 
   protected dateRangeOption = this.options[0].value;
-  private data = inject(POPUP_DATA) as any;
+  private data = inject(POPUP_DATA) as DateFilterData;
   protected DateRangeOption = DateRangeOption;
 
-  ngOnInit() {
-    if(this.data && this.data.dateRangeOption) {
+  public ngOnInit(): void {
+    if (this.data && this.data.dateRangeOption) {
       this.dateRangeOption = this.data.dateRangeOption;
       this.fromDate = this.data.fromDate;
       this.toDate = this.data.toDate;
     }
-
   }
 
 
-  protected getValues() {
+  protected getValues(): DateFilterData {
     return {
       fromDate: this.fromDate,
       toDate: this.toDate,
-      selectedOption: this.dateRangeOption
+      dateRangeOption: this.dateRangeOption
     }
   }
-
 }

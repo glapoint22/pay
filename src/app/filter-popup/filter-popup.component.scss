@@ -21,8 +21,13 @@
 }
 
 
-icon {
+.close {
     width: 10px;
     height: 10px;
     fill: #000000;
+    cursor: pointer;
+
+    &:hover {
+        fill: #1a1a1a;
+    }
 }

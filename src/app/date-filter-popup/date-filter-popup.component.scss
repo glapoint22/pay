@@ -2,7 +2,31 @@
     width: 348px;
 }
 
-form-field {
+.dropdown {
     height: 27px;
-    // margin-bottom: 15px;
+    margin-bottom: 15px;
+}
+
+.date-input-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.date-input {
+    flex: 1;
+    height: 34px;
+}
+
+.and {
+    margin: 0 10px;
+}
+
+.button-icon {
+    margin-right: 2px;
+    icon {
+        width: 20px;
+        height: 20px;
+    }
 }
