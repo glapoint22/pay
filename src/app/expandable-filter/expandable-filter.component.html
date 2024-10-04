@@ -1,13 +1,17 @@
-<div class="expansion-panel" (click)="toggle()" [class]="expanded ? 'foo': null">
-    <div>{{title()}}</div>
-    <icon class="add-icon" [name]="expanded ? 'close' : 'add'"></icon>
+<div class="expandable-filter-base">
+    <div class="expandable-filter" (click)="toggle()" [ngClass]="{'filter-expanded': expanded, 'has-value': value}">
+        <div style="display: flex; height: 100%; align-items: center;">{{title()}}</div>
 
-</div>
-<div #panelContent class="expansion-panel-content" [class]="expanded ? 'expanded' : null">
-    <ng-content></ng-content>
+        @if(value) {
+        <div class="value-container">
+            {{value}}
+        </div>
+        }
 
-    <!-- <div style="width: 100%; display: flex; align-items: center; justify-content: space-between; margin-top: 10px;">
-        <div style="font-size: 12px; font-weight: 500; color: #F26060; text-decoration: underline; cursor: pointer;">Clear</div>
-        <div style="font-size: 12px; font-weight: 500; color: #094A82; text-decoration: underline; cursor: pointer;">Confirm</div>
-    </div> -->
+        <icon class="add-icon" [name]="expanded ? 'close' : 'add'"></icon>
+
+    </div>
+    <div #panelContent class="expandable-filter-content" [class]="expanded ? 'content-expanded' : null">
+        <ng-content></ng-content>
+    </div>
 </div>

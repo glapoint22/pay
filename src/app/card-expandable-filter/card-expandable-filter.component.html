@@ -1,3 +1,14 @@
-<expandable-filter title="Card Last 4">
-    <card-filter-content></card-filter-content>
+<expandable-filter #expandableFilter title="Card Last 4" (onExpanded)="input.focus()">
+    <div class="label">is equal to</div>
+
+    <form (ngSubmit)="expandableFilter.setValue(value)">
+        <form-field>
+            <input #input inputField [(ngModel)]="value" name="cardLast4">
+        </form-field>
+
+        <div class="button-container">
+            <button type="button" class="button-text clear-button" (click)="value = null; expandableFilter.setValue(value)">Clear</button>
+            <button type="submit" class="button-text confirm-button" [disabled]="!value">Confirm</button>
+        </div>
+    </form>
 </expandable-filter>

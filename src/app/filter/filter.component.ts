@@ -2,6 +2,7 @@ import { Component, contentChild, ElementRef, inject, output, signal, Type } fro
 import { IconComponent } from '../icon/icon.component';
 import { PopupService } from '../popup/popup.service';
 import { PopupRef } from '../models/popup-ref';
+import { FiltersGroupComponent } from '../filters-group/filters-group.component';
 
 @Component({
   selector: 'filter',
@@ -20,6 +21,7 @@ export class FilterComponent<T> {
   private popupRef!: PopupRef<T>;
   private elementRef = inject(ElementRef);
   private isPopupOpen!: boolean;
+  private filtersGroup = inject(FiltersGroupComponent);
 
   public togglePopupFilter(popupFilter: Type<T>, data?: any): void {
     if (this.isPopupOpen) {

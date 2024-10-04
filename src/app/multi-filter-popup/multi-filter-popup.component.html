@@ -1,3 +1,5 @@
 <filter-popup title="Filter by">
-    <card-expandable-filter></card-expandable-filter>
+    <card-expandable-filter #expandableFilter></card-expandable-filter>
+
+    <button class="button-apply" [popupClose]="onApplyClick()">Apply All</button>
 </filter-popup>

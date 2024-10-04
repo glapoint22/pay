@@ -1,0 +1,30 @@
+form-field {
+    height: 34px;
+    margin: 10px 0;
+    color: #000000;
+}
+
+.button-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.button-text {
+    font-size: 12px;
+}
+
+.clear-button {
+    color: #F26060;
+}
+
+.confirm-button:not(:disabled) {
+    color: #094A82;
+}
+
+.label {
+    color: #61798D;
+    font-size: 14px;
+}

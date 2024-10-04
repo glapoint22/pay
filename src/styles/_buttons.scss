@@ -135,12 +135,14 @@ $active-amount: 6;
 
 
 .button-text {
-    @extend .button-rectangle;
     background-color: transparent;
     font-size: 16px;
     color: var(--button-text);
     text-decoration: underline;
-    padding: 8px 15px;
+    border: none;
+    border-radius: 9999px;
+    padding: 8px;
+    cursor: pointer;
 
     &:hover:not(:disabled) {
         background-color: var(--button-text-background-hover);
