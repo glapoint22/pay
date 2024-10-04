@@ -9,6 +9,4 @@ import { CardFilterContentComponent } from "../card-filter-content/card-filter-c
   templateUrl: './card-expandable-filter.component.html',
   styleUrl: './card-expandable-filter.component.scss'
 })
-export class CardExpandableFilterComponent {
-
-}
+export class CardExpandableFilterComponent { }

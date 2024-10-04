@@ -16,5 +16,4 @@ export class MultiFilterComponent {
 
     this.filter()?.togglePopupFilter(MultiFilterPopupComponent);
   }
-
 }

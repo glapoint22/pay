@@ -39,7 +39,6 @@ export class FilterComponent<T> {
       .onClose()
       .subscribe((value: any) => {
         if (value) {
-          this.setValue(value);
           this.onChange.emit(value);
         }
           
