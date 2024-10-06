@@ -1,7 +1,7 @@
 <div class="page">
     <page-header>Transactions</page-header>
 
-    <filters-group style="max-width: 1500px;">
+    <filters-group style="max-width: 1500px;" (onChange)="onFilterChange($event)">
         <date-filter></date-filter>
         <ng-template #viewContainerRef></ng-template>
         <multi-filter></multi-filter>

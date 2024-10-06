@@ -37,6 +37,15 @@ export class PopupRef<T> {
     public close(result?: any): void {
         this._onClose.next(result);
         this.overlayRef.detach();
+    }
+
+
+
+    public dispose(): void {
+        this._onClose.complete();
+        this._afterOpened.complete();
+        this._backdropClick.complete();
+        this._keydownEvents.complete();
         this.overlayRef.dispose();
     }
 
@@ -65,7 +74,7 @@ export class PopupRef<T> {
 
 
 
-    
+
     keydownEvents(): Observable<KeyboardEvent> {
         return this._keydownEvents.asObservable();
     }

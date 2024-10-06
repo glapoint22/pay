@@ -1,6 +1,6 @@
 <filter-popup title="Date of Payment">
     <form-field class="dropdown">
-        <dropdown [(ngModel)]="dateRangeOption">
+        <dropdown [(ngModel)]="selectedDateRange">
             @for (option of options; track option) {
             <dropdown-item [value]="option.value">{{option.key}}</dropdown-item>
             }
@@ -15,7 +15,7 @@
             </button>
         </form-field>
 
-        @if(dateRangeOption === DateRangeOption.DateRange) {
+        @if(selectedDateRange === DateRangeOption.DateRange) {
             <span class="and">and</span>
 
         <form-field class="date-input">

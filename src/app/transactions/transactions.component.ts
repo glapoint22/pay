@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { DataGridComponent } from '../data-grid/data-grid.component';
 import { ColDef } from '../data-grid/models/col-def';
 import { PageHeaderComponent } from '../page-header/page-header.component';
@@ -8,6 +8,10 @@ import { TagParams } from '../tag/models/tag-params';
 import { DateFilterComponent } from '../date-filter/date-filter.component';
 import { FiltersGroupComponent } from '../filters-group/filters-group.component';
 import { MultiFilterComponent } from '../multi-filter/multi-filter.component';
+import { TransactionsStore } from '../stores/transactions.store';
+import { FILTER_STORE } from '../tokens/filter-store.token';
+
+
 
 @Component({
   selector: 'transactions',
@@ -20,7 +24,10 @@ import { MultiFilterComponent } from '../multi-filter/multi-filter.component';
     FiltersGroupComponent
   ],
   templateUrl: './transactions.component.html',
-  styleUrl: './transactions.component.scss'
+  styleUrl: './transactions.component.scss',
+  providers: [
+    { provide: FILTER_STORE, useFactory: () => inject(TransactionsStore) }
+  ],
 })
 export class TransactionsComponent {
   colDefs: ColDef[] = [
@@ -131,4 +138,9 @@ export class TransactionsComponent {
     { house: "Frey", character: "Roslin Frey", status: "Lady", title: "Lady of Riverrun" },
     { house: "Targaryen", character: "Viserys I Targaryen", status: "King", title: "King of the Andals and the First Men" }
   ];
+
+
+  onFilterChange(filters: any) {
+
+  }
 }

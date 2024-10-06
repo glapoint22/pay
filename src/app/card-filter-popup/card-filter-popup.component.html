@@ -1,3 +1,16 @@
 <filter-popup title="Card Last 4">
-    <!-- <card-filter-content></card-filter-content> -->
+    <div class="label">is equal to</div>
+
+    <form>
+        <form-field>
+            <input #input inputField [(ngModel)]="value" name="cardLast4">
+        </form-field>
+
+        <button class="button-apply" [popupClose]="value">Apply</button>
+
+        <!-- <div class="button-container">
+            <button type="button" class="button-text clear-button" (click)="clear()">Clear</button>
+            <button type="submit" class="button-text confirm-button" [disabled]="!value">Confirm</button>
+        </div> -->
+    </form>
 </filter-popup>

@@ -14,8 +14,6 @@ import { DateRangeOption } from '../models/date-range-option';
 import { IconComponent } from '../icon/icon.component';
 import { DateFilterData } from '../models/date-filter-data';
 
-
-
 @Component({
   selector: 'date-filter-popup',
   standalone: true,
@@ -35,8 +33,12 @@ import { DateFilterData } from '../models/date-filter-data';
   styleUrl: './date-filter-popup.component.scss'
 })
 export class DateFilterPopupComponent {
-  protected fromDate: Date = new Date();
-  protected toDate: Date = new Date();
+  protected fromDate!: Date;
+  protected toDate!: Date;
+  protected selectedDateRange!: DateRangeOption;
+  protected DateRangeOption = DateRangeOption;
+  private data = inject<DateFilterData>(POPUP_DATA);
+
   protected options: KeyValue<string, number>[] = [
     {
       key: 'is on date',
@@ -48,16 +50,11 @@ export class DateFilterPopupComponent {
     }
   ]
 
-  protected dateRangeOption = this.options[0].value;
-  private data = inject(POPUP_DATA) as DateFilterData;
-  protected DateRangeOption = DateRangeOption;
-
   public ngOnInit(): void {
-    if (this.data && this.data.dateRangeOption) {
-      this.dateRangeOption = this.data.dateRangeOption;
-      this.fromDate = this.data.fromDate;
-      this.toDate = this.data.toDate;
-    }
+    this.selectedDateRange = this.options[0].value;
+    this.selectedDateRange = this.data.dateRangeOption;
+    this.fromDate = this.data.fromDate ? this.data.fromDate : new Date();
+    this.toDate = this.data.toDate ? this.data.toDate : new Date();
   }
 
 
@@ -65,7 +62,7 @@ export class DateFilterPopupComponent {
     return {
       fromDate: this.fromDate,
       toDate: this.toDate,
-      dateRangeOption: this.dateRangeOption
+      dateRangeOption: this.selectedDateRange
     }
   }
 }

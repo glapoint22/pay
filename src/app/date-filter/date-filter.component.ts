@@ -1,9 +1,11 @@
-import { Component, viewChild } from '@angular/core';
+import { Component, inject, viewChild } from '@angular/core';
 import { FilterComponent } from '../filter/filter.component';
 import { IconComponent } from '../icon/icon.component';
 import { DatePipe } from '@angular/common';
 import { DateRangeOption } from '../models/date-range-option';
 import { DateFilterData } from '../models/date-filter-data';
+import { FILTER_STORE } from '../tokens/filter-store.token';
+import { IFilterStore } from '../models/filter-store.interface';
 
 @Component({
   selector: 'date-filter',
@@ -17,45 +19,46 @@ import { DateFilterData } from '../models/date-filter-data';
 })
 export class DateFilterComponent {
   private filter = viewChild(FilterComponent);
-  protected fromDate!: Date;
-  protected toDate!: Date;
-  protected dateRangeOption!: DateRangeOption;
+  private store = inject<IFilterStore>(FILTER_STORE);
+
+  public ngOnInit(): void {
+    const formattedValue = this.setFormattedValue(this.store.filters.dateFilter());
+    this.filter()?.setValue(formattedValue);
+  }
 
   protected async onClick(): Promise<void> {
     const { DateFilterPopupComponent } = await import('../date-filter-popup/date-filter-popup.component');
 
-    this.filter()?.togglePopupFilter(DateFilterPopupComponent, {
-      fromDate: this.fromDate,
-      toDate: this.toDate,
-      dateRangeOption: this.dateRangeOption
-    } as DateFilterData);
+    this.filter()?.openPopupFilter(DateFilterPopupComponent, this.store.filters.dateFilter());
   }
 
   protected onChange(dateFilterData: DateFilterData): void {
-    if (!dateFilterData) {
-      this.fromDate = new Date();
-      this.toDate = new Date();
-      this.dateRangeOption = DateRangeOption.SingleDate;
-      return;
-    }
+    const formattedValue = this.setFormattedValue(dateFilterData);
+    this.filter()?.setValue(formattedValue);
+    this.store.updateDateFilter(dateFilterData);
+  }
 
+  protected setFormattedValue(dateFilterData: DateFilterData): string | null {
     const datePipe = new DatePipe('en-US');
+    let formattedValue: string | null;
 
-    this.fromDate = dateFilterData.fromDate;
-    this.toDate = dateFilterData.toDate;
-    this.dateRangeOption = dateFilterData.dateRangeOption;
+    if (dateFilterData.dateRangeOption === DateRangeOption.DateRange) {
+      const startFormatted = datePipe.transform(dateFilterData.fromDate, 'MMM d');
+      const endFormatted = datePipe.transform(dateFilterData.toDate, 'MMM d, y');
 
-    let value: string | null;
-
-    if (this.dateRangeOption === DateRangeOption.DateRange) {
-      const startFormatted = datePipe.transform(this.fromDate, 'MMM d');
-      const endFormatted = datePipe.transform(this.toDate, 'MMM d, y');
-
-      value = `${startFormatted} - ${endFormatted}`;
+      formattedValue = `${startFormatted} - ${endFormatted}`;
     } else {
-      value = datePipe.transform(dateFilterData.fromDate, 'MMM d, y');
+      formattedValue = datePipe.transform(dateFilterData.fromDate, 'MMM d, y');
     }
 
-    this.filter()?.setValue(value);
+    return formattedValue;
+  }
+
+  protected clear(): void {
+    this.store.updateDateFilter({
+      fromDate: null,
+      toDate: null,
+      dateRangeOption: DateRangeOption.SingleDate
+    } as DateFilterData);
   }
 }

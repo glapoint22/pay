@@ -2,7 +2,7 @@ import { Component, contentChild, ElementRef, inject, output, signal, Type } fro
 import { IconComponent } from '../icon/icon.component';
 import { PopupService } from '../popup/popup.service';
 import { PopupRef } from '../models/popup-ref';
-import { FiltersGroupComponent } from '../filters-group/filters-group.component';
+import { PopupConfig } from '../models/popup-config';
 
 @Component({
   selector: 'filter',
@@ -14,50 +14,55 @@ import { FiltersGroupComponent } from '../filters-group/filters-group.component'
   styleUrl: './filter.component.scss'
 })
 export class FilterComponent<T> {
+  public onClick = output();
   public onChange = output<any>();
+  public onClear = output();
   protected icon = contentChild(IconComponent);
   protected value = signal<string | null>(null);
   private popupService = inject(PopupService);
   private popupRef!: PopupRef<T>;
   private elementRef = inject(ElementRef);
   private isPopupOpen!: boolean;
-  private filtersGroup = inject(FiltersGroupComponent);
 
-  public togglePopupFilter(popupFilter: Type<T>, data?: any): void {
-    if (this.isPopupOpen) {
-      this.popupRef.close();
-      return;
-    }
-
+  public openPopupFilter(popupFilter: Type<T>, data?: any): void {
     this.popupRef = this.popupService.open(popupFilter, {
       origin: this.elementRef.nativeElement,
       repositionOnScroll: true,
       data: data
-    });
+    } as PopupConfig);
 
     this.isPopupOpen = true;
 
     const onCloseSubscription = this.popupRef
       .onClose()
       .subscribe((value: any) => {
-        if (value) {
-          this.onChange.emit(value);
-        }
-          
-
+        if (value) this.onChange.emit(value);
         this.isPopupOpen = false;
         onCloseSubscription.unsubscribe();
       });
   }
 
+  protected togglePopupFilter() {
+    if (this.isPopupOpen) {
+      this.popupRef.close();
+      return;
+    }
+
+    this.onClick.emit();
+  }
+
   protected clear(): void {
-    this.popupRef.close();
+    if (this.popupRef) this.popupRef.close();
     this.setValue(null);
-    this.onChange.emit(null);
+    this.onClear.emit();
   }
 
 
   public setValue(value: string | null): void {
     this.value.set(value);
+  }
+
+  ngOnDestroy() {
+    if (this.popupRef) this.popupRef.dispose();
   }
 }

@@ -22,7 +22,6 @@ export class ExpandableFilterComponent {
 
   public setValue(value: any): void {
     this.value = value;
-    this.toggle();
   }
 
 

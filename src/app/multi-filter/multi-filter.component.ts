@@ -12,17 +12,16 @@ import { FiltersGroupComponent } from '../filters-group/filters-group.component'
 export class MultiFilterComponent {
   private filter = viewChild(FilterComponent);
   private filterGroup = inject(FiltersGroupComponent);
+  private multiFilterData: any[] = [];
 
   protected async onClick(): Promise<void> {
     const { MultiFilterPopupComponent } = await import('../multi-filter-popup/multi-filter-popup.component');
 
-    this.filter()?.togglePopupFilter(MultiFilterPopupComponent);
+    this.filter()?.openPopupFilter(MultiFilterPopupComponent, this.multiFilterData);
   }
 
-  protected onChange(value: any): void {
-    value.forEach((filter: any) => {
-      const x: any = this.filterGroup.createFilter(filter.type);
-      x.filter().setValue(filter.value);
-    });
+  protected onChange(multiFilterData: any[]): void {
+    this.multiFilterData = multiFilterData;
+    // this.filterGroup?.setMultiFilters(multiFilterData);
   }
 }
