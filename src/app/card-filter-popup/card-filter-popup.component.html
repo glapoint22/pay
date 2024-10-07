@@ -6,11 +6,6 @@
             <input #input inputField [(ngModel)]="value" name="cardLast4">
         </form-field>
 
-        <button class="button-apply" (click)="store.updateCardFilter(value)">Apply</button>
-
-        <!-- <div class="button-container">
-            <button type="button" class="button-text clear-button" (click)="clear()">Clear</button>
-            <button type="submit" class="button-text confirm-button" [disabled]="!value">Confirm</button>
-        </div> -->
+        <button class="button-apply" [popupClose]="value">Apply</button>
     </form>
 </filter-popup>

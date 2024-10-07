@@ -1,3 +1,13 @@
 :host {
     width: 240px;
 }
+
+form-field {
+    height: 34px;
+    margin: 10px 0;
+    color: var(--filter-selected-text);
+}
+.label {
+    color: var(--filter-label);
+    font-size: 14px;
+}

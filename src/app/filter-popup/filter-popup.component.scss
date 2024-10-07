@@ -1,5 +1,5 @@
 .filter-popup {
-    background: #FAFAFA;
+    background: var(--filter-background);
     padding: 15px;
     border-radius: 5px;
     box-shadow: 0px 0px 16px 0px #00000020;
@@ -15,7 +15,7 @@
 }
 
 .filter-popup-title {
-    color: #000000;
+    color: var(--filter-selected-text);
     font-size: 14px;
     font-weight: 500;
 }
@@ -24,10 +24,6 @@
 .close {
     width: 10px;
     height: 10px;
-    fill: #000000;
+    fill: var(--filter-selected-text);
     cursor: pointer;
-
-    &:hover {
-        fill: #1a1a1a;
-    }
 }

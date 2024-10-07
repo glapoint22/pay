@@ -22,6 +22,12 @@ export class ExpandableFilterComponent {
 
   public setValue(value: any): void {
     this.value = value;
+    this.close();
+  }
+
+  private close(): void {
+    this.expanded = false;
+    this.updateMaxHeight();
   }
 
 

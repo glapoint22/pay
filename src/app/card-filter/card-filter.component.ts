@@ -9,8 +9,8 @@ import { FilterComponent } from '../filter/filter.component';
   styleUrl: './card-filter.component.scss'
 })
 export class CardFilterComponent {
-  public value = input<number>();
-  public onUpdate = output<number>();
+  public value = input<number | null>();
+  public onUpdate = output<number | null>();
   private filter = viewChild(FilterComponent);
 
   public ngOnChanges(): void {
@@ -26,11 +26,9 @@ export class CardFilterComponent {
   protected onChange(value: number): void {
     this.filter()?.setValue(value);
     this.onUpdate.emit(value);
-
-    
   }
 
   protected clear(): void {
-    
+    this.onUpdate.emit(null);
   }
 }

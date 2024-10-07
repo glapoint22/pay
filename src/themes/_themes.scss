@@ -17,6 +17,7 @@
 @use './data-grid-theme' as data-grid;
 @use './tag-theme' as tag-theme;
 @use './calendar-theme' as calendar-theme;
+@use './filter-theme' as filter-theme;
 
 
 @mixin define-theme($theme) {
@@ -39,5 +40,6 @@
         @include data-grid.theme($theme);
         @include tag-theme.theme($theme);
         @include calendar-theme.theme($theme);
+        @include filter-theme.theme($theme);
     }
 }

@@ -1,11 +1,10 @@
-import { Component, inject } from '@angular/core';
+import { Component } from '@angular/core';
 import { ExpandableFilterComponent } from '../expandable-filter/expandable-filter.component';
 import { FormFieldComponent } from '../form-field/form-field.component';
 import { FormsModule } from '@angular/forms';
 import { InputFieldDirective } from '../input-field/input-field.directive';
-import { ExpandableFilter } from '../models/expandable-filter';
-import { CardFilterComponent } from '../card-filter/card-filter.component';
-import { TransactionsStore } from '../stores/transactions.store';
+import { ExpandableFilter } from '../expandable-filter';
+import { FilterType } from '../filter-type';
 
 @Component({
   selector: 'card-expandable-filter',
@@ -20,7 +19,5 @@ import { TransactionsStore } from '../stores/transactions.store';
   styleUrl: './card-expandable-filter.component.scss'
 })
 export class CardExpandableFilterComponent extends ExpandableFilter {
-  protected store = inject(TransactionsStore);
-  public override filterType = 'card filter';
-
+  public override type = FilterType.CardFilter;
 }

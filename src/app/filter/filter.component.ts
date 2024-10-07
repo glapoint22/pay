@@ -42,7 +42,7 @@ export class FilterComponent<T> {
       });
   }
 
-  protected togglePopupFilter() {
+  protected togglePopupFilter(): void {
     if (this.isPopupOpen) {
       this.popupRef.close();
       return;
@@ -62,7 +62,7 @@ export class FilterComponent<T> {
     this.value.set(value);
   }
 
-  ngOnDestroy() {
+  public ngOnDestroy() {
     if (this.popupRef) this.popupRef.dispose();
   }
 }

@@ -1,0 +1,18 @@
+@use './utility';
+
+@mixin theme($theme) {
+    @include utility.theme-variables($theme, (
+        (variable-name: 'filter-icon', color-key: 15),
+        (variable-name: 'filter-text', color-key: 15),
+        (variable-name: 'filter-border', color-key: 90),
+        (variable-name: 'filter-selected-border', color-key: 260),
+        (variable-name: 'filter-selected-background', color-key: 440),
+        (variable-name: 'filter-selected-text', color-key: 0),
+        (variable-name: 'filter-clear-text', color-key: 460),
+        (variable-name: 'filter-confirm-text', color-key: 150),
+        (variable-name: 'filter-label', color-key: 30),
+        (variable-name: 'filter-content-background', color-key: 30, opacity: 0.08),
+        (variable-name: 'filter-expanded-border', color-key: 300, opacity: 0.48),
+        (variable-name: 'filter-background', color-key: 97),
+    ));
+}

@@ -6,7 +6,7 @@ import { computed } from "@angular/core";
 type TransactionsState = {
     filters: {
         dateFilter: DateFilterData,
-        cardFilter: number
+        cardFilter: number | null
     };
 };
 
@@ -17,7 +17,7 @@ const initialState: TransactionsState = {
             toDate: null,
             dateRangeOption: DateRangeOption.SingleDate
         },
-        cardFilter: 0
+        cardFilter: null
     },
 };
 
@@ -25,7 +25,7 @@ export const TransactionsStore = signalStore(
     { providedIn: 'root' },
     withState(initialState),
     withComputed(({filters}) => ({
-        cardFilterVisible: computed(() => filters.cardFilter() > 0 ? true : false)
+        cardFilterVisible: computed(() => filters.cardFilter() !== null ? true : false)
       })),
     withMethods((store) => ({
 
@@ -35,7 +35,7 @@ export const TransactionsStore = signalStore(
             });
         },
 
-        updateCardFilter(cardFilter: number) {
+        updateCardFilter(cardFilter: number | null) {
             patchState(store, (state) => {
                 return ({ filters: { ...state.filters, cardFilter } })
             });

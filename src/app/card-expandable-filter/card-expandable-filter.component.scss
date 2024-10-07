@@ -1,7 +1,7 @@
 form-field {
     height: 34px;
     margin: 10px 0;
-    color: #000000;
+    color: var(--filter-selected-text);
 }
 
 .button-container {
@@ -17,14 +17,14 @@ form-field {
 }
 
 .clear-button {
-    color: #F26060;
+    color: var(--filter-clear-text);
 }
 
 .confirm-button:not(:disabled) {
-    color: #094A82;
+    color: var(--filter-confirm-text);
 }
 
 .label {
-    color: #61798D;
+    color: var(--filter-label);
     font-size: 14px;
 }
