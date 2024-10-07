@@ -21,43 +21,17 @@
     &:focus {
         outline-width: 2px;
         outline-color: var(--form-field-selected-border);
-
-        .form-field-label-container {
-            color: var(--form-field-selected-label);
-        }
     }
 }
 
 
-.form-field-error {
-    .form-field-label-container {
-        outline-color: var(--form-field-error-color);
-        color: var(--form-field-error-color);
-    }
-
-    &.form-field-selected,
-    &:focus {
-        .form-field-label-container {
-            outline-color: var(--form-field-error-color);
-            color: var(--form-field-error-color);
-        }
-    }
-}
 
 
-.form-field-label-container {
-    margin: 0 5px;
-    font-size: 12px;
-    position: relative;
-    top: -6px;
-    color: var(--form-field-label);
-}
+
+
 
 .form-field-disabled {
     pointer-events: none;
     outline-color: var(--form-field-disabled-border);
-
-    .form-field-label-container {
-        color: var(--form-field-disabled-label);
-    }
+    
 }

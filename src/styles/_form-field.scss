@@ -8,8 +8,4 @@
     .icon-button {
         color: var(--icon-button-disabled-color);
     }
-
-    &~form-field-hint {
-        color: var(--form-field-disabled-label-color);
-    }
 }

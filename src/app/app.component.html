@@ -2,7 +2,11 @@
 
 <div class="main-container">
     <div class="content">
-        <sidebar></sidebar>
+
+        @if(showSidebar) {
+            <sidebar></sidebar>
+        }
+
         <div class="router-outlet">
             <router-outlet />
         </div>

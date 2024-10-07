@@ -1,1 +1,45 @@
-<p>sign-in works!</p>
+<div style="position: absolute;
+top: 0;
+right: 0;
+bottom: 0;
+left: 0;
+background: radial-gradient(87.41% 116.54% at 93.19% 5.74%, #EBF0F4 0%, #94C3E8 100%); display: flex; justify-content: center; align-items: center;">
+
+    <form-base>
+        <form-header>Welcome to SMI Pay</form-header>
+        <form-content>
+            <h1 style="font-family: Source Serif Pro;
+            font-size: 40px;
+            font-weight: 600; color: #000000; margin-top: 0; margin-bottom: 40px;
+            ">Sign In</h1>
+
+            <form>
+                <div style="color: #000000; margin-bottom: 10px; font-weight: 600;">Email <span style="color: #F26060;">*</span></div>
+                <form-field style="margin-bottom: 40px; height: 43px;">
+                    <input inputField>
+                    
+                </form-field>
+
+                <div style="color: #000000; margin-bottom: 10px; font-weight: 600;">Password <span style="color: #F26060;">*</span></div>
+                <form-field style="height: 43px;">
+                    <input inputField>
+                    
+                </form-field>
+
+                <a routerLink="/reset-password" style="color: #1267AF; margin-top: 20px; display: block;">Forgot your password?</a>
+
+                <button type="submit" class="button-submit" style="margin-top: 40px;">Sign In</button>
+
+
+                <a routerLink="/sso" style="color: #1267AF; margin-top: 40px; display: block; text-align: center;">Use single sign-on (SSO)</a>
+            </form>
+
+        </form-content>
+
+        <form-footer>
+            <div style="color: #000000;">Locked account or can’t sign in? <a style="color: #1267AF;" href="">Contact support</a></div>
+        </form-footer>
+        
+    </form-base>
+
+</div>
