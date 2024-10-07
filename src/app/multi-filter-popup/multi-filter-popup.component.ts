@@ -15,27 +15,46 @@ import { POPUP_DATA } from '../types/popup-data';
 export class MultiFilterPopupComponent {
   private expandableFilters = viewChildren<ExpandableFilter>('expandableFilter');
   private multiFilterData = inject(POPUP_DATA) as any[];
+  protected filters: any[] = [];
 
   ngOnInit(): void {
     this.expandableFilters().forEach((expandableFilter: ExpandableFilter) => {
-      const value = this.multiFilterData.find((filter: any) => filter.type === expandableFilter.filterType)?.value;
-      expandableFilter.setValue(value);
+      const multiFilter = this.multiFilterData.find((filter: any) => filter.type === expandableFilter.filterType);
+
+      if (!multiFilter) {
+        return;
+      }
+      expandableFilter.setValue(multiFilter.value);
     });
+  }
+
+  onChange(value: any): void {
+    const index = this.filters.findIndex((filter: any) => filter.type === value.type);
+
+    if (index === -1) {
+      this.filters.push(value);
+    } else {
+      this.filters[index] = value;
+    }
+
+    // if (!this.filters.some((filter: any) => filter.type === value.type)) {
+    //   this.filters.push(value);
+    // }
   }
 
 
 
-  onApplyClick(): any {
-    const filters: any[] = [];
+  // onApplyClick(): any {
+  //   const filters: any[] = [];
 
-    this.expandableFilters().forEach((expandableFilter: ExpandableFilter) => {
-      filters.push({
-        type: expandableFilter.filterType,
-        value: expandableFilter.value
-      });
-    });
+  //   this.expandableFilters().forEach((expandableFilter: ExpandableFilter) => {
+  //     filters.push({
+  //       type: expandableFilter.filterType,
+  //       value: expandableFilter.value
+  //     });
+  //   });
 
-    return filters;
+  //   return filters;
 
-  }
+  // }
 }

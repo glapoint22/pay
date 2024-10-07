@@ -1,10 +1,32 @@
 <div class="page">
     <page-header>Transactions</page-header>
 
-    <filters-group style="max-width: 1500px;" (onChange)="onFilterChange($event)">
-        <date-filter></date-filter>
-        <ng-template #viewContainerRef></ng-template>
-        <multi-filter></multi-filter>
+    <filters-group #filtersGroup style="max-width: 1500px;">
+        <date-filter [value]="store.filters.dateFilter()" (onUpdate)="store.updateDateFilter($event)"></date-filter>
+        
+        
+        <!-- <ng-container #viewContainerRef></ng-container> -->
+
+        <!-- <ng-template> -->
+            @if (store.cardFilterVisible()) {
+                <card-filter #cardFilter [value]="store.filters.cardFilter()" (onUpdate)="store.updateCardFilter($event)"></card-filter>
+            }
+            
+        <!-- </ng-template> -->
+
+        <multi-filter (onUpdate)="onFilterChange($event)"></multi-filter>
+
+
+        
+        
+
+        <!-- <ng-template #myTemplate let-initialValue="initialValue">
+            <date-filter [value]="!store.filters.dateFilter().fromDate ? initialValue : store.filters.dateFilter()" (change)="store.updateDateFilter($event)"></date-filter>
+        </ng-template>
+        
+        <button (click)="filtersGroup.createFilter(myTemplate)">Trumpy</button> -->
+        
+        
         
     </filters-group>
 

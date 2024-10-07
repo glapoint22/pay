@@ -1,11 +1,9 @@
-import { Component, inject, viewChild } from '@angular/core';
+import { Component, input, output, viewChild } from '@angular/core';
 import { FilterComponent } from '../filter/filter.component';
 import { IconComponent } from '../icon/icon.component';
 import { DatePipe } from '@angular/common';
 import { DateRangeOption } from '../models/date-range-option';
 import { DateFilterData } from '../models/date-filter-data';
-import { FILTER_STORE } from '../tokens/filter-store.token';
-import { IFilterStore } from '../models/filter-store.interface';
 
 @Component({
   selector: 'date-filter',
@@ -18,24 +16,25 @@ import { IFilterStore } from '../models/filter-store.interface';
   styleUrl: './date-filter.component.scss'
 })
 export class DateFilterComponent {
+  public value = input.required<DateFilterData>();
+  public onUpdate = output<DateFilterData>();
   private filter = viewChild(FilterComponent);
-  private store = inject<IFilterStore>(FILTER_STORE);
 
   public ngOnInit(): void {
-    const formattedValue = this.setFormattedValue(this.store.filters.dateFilter());
+    const formattedValue = this.setFormattedValue(this.value());
     this.filter()?.setValue(formattedValue);
   }
 
   protected async onClick(): Promise<void> {
     const { DateFilterPopupComponent } = await import('../date-filter-popup/date-filter-popup.component');
 
-    this.filter()?.openPopupFilter(DateFilterPopupComponent, this.store.filters.dateFilter());
+    this.filter()?.openPopupFilter(DateFilterPopupComponent, this.value());
   }
 
   protected onChange(dateFilterData: DateFilterData): void {
     const formattedValue = this.setFormattedValue(dateFilterData);
     this.filter()?.setValue(formattedValue);
-    this.store.updateDateFilter(dateFilterData);
+    this.onUpdate.emit(dateFilterData);
   }
 
   protected setFormattedValue(dateFilterData: DateFilterData): string | null {
@@ -55,7 +54,7 @@ export class DateFilterComponent {
   }
 
   protected clear(): void {
-    this.store.updateDateFilter({
+    this.onUpdate.emit({
       fromDate: null,
       toDate: null,
       dateRangeOption: DateRangeOption.SingleDate

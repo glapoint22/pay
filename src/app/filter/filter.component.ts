@@ -58,7 +58,7 @@ export class FilterComponent<T> {
   }
 
 
-  public setValue(value: string | null): void {
+  public setValue(value: any): void {
     this.value.set(value);
   }
 

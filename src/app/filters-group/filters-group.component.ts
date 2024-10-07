@@ -1,4 +1,6 @@
-import { Component, contentChild, output, Type, ViewContainerRef } from '@angular/core';
+import { Component, contentChild, contentChildren, output, TemplateRef, Type, ViewContainerRef } from '@angular/core';
+import { DateFilterComponent } from '../date-filter/date-filter.component';
+import { DateRangeOption } from '../models/date-range-option';
 
 @Component({
   selector: 'filters-group',
@@ -11,6 +13,19 @@ export class FiltersGroupComponent {
   // public onChange = output<any>();
   private viewContainerRef = contentChild('viewContainerRef', { read: ViewContainerRef });
   // private multiFilters: any[] = [];
+  private templateRefs = contentChildren(TemplateIdentifierDirective, { read: TemplateRef });
+  private ids = contentChildren(TemplateIdentifierDirective);
+  private foo: any[] = [];
+
+  // ngOnInit(): void {
+  //   this.foo = this.templateRefs().map((value: any, index: number) => {
+  //     return {  id: this.ids()[index].id, template: value }; 
+  //   });
+
+  //   console.log(this.foo);
+  // }
+
+
 
 
   // public setMultiFilters(multiFilterData: any[]): void {
@@ -42,10 +57,17 @@ export class FiltersGroupComponent {
   // }
 
 
-  private createFilter<T>(componentType: Type<T>): T | undefined {
-    const componentRef = this.viewContainerRef()?.createComponent(componentType);
-    const component = componentRef?.instance;
-
-    return component;
+  public createFilter(templateRef: any): void {
+    this.viewContainerRef()?.createEmbeddedView(templateRef);
   }
+}
+
+import { Directive, Input } from '@angular/core';
+
+@Directive({
+  selector: '[templateIdentifier]',
+  standalone: true
+})
+export class TemplateIdentifierDirective {
+  @Input('templateIdentifier') id!: string;
 }

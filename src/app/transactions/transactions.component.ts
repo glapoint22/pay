@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, contentChild, contentChildren, inject, TemplateRef, viewChild, viewChildren, ViewContainerRef } from '@angular/core';
 import { DataGridComponent } from '../data-grid/data-grid.component';
 import { ColDef } from '../data-grid/models/col-def';
 import { PageHeaderComponent } from '../page-header/page-header.component';
@@ -9,7 +9,8 @@ import { DateFilterComponent } from '../date-filter/date-filter.component';
 import { FiltersGroupComponent } from '../filters-group/filters-group.component';
 import { MultiFilterComponent } from '../multi-filter/multi-filter.component';
 import { TransactionsStore } from '../stores/transactions.store';
-import { FILTER_STORE } from '../tokens/filter-store.token';
+import { CommonModule } from '@angular/common';
+import { CardFilterComponent } from "../card-filter/card-filter.component";
 
 
 
@@ -21,15 +22,20 @@ import { FILTER_STORE } from '../tokens/filter-store.token';
     DataGridComponent,
     DateFilterComponent,
     MultiFilterComponent,
-    FiltersGroupComponent
-  ],
+    FiltersGroupComponent,
+    CommonModule,
+    CardFilterComponent
+],
   templateUrl: './transactions.component.html',
   styleUrl: './transactions.component.scss',
-  providers: [
-    { provide: FILTER_STORE, useFactory: () => inject(TransactionsStore) }
-  ],
+  // providers: [
+  //   { provide: FILTER_STORE, useFactory: () => inject(TransactionsStore) }
+  // ],
 })
 export class TransactionsComponent {
+  protected store = inject(TransactionsStore);
+
+
   colDefs: ColDef[] = [
     { field: "house", width: 150 },
     { field: "character", width: 300 },
@@ -139,8 +145,20 @@ export class TransactionsComponent {
     { house: "Targaryen", character: "Viserys I Targaryen", status: "King", title: "King of the Andals and the First Men" }
   ];
 
+  // private viewContainerRef = viewChild('viewContainerRef', { read: ViewContainerRef });
+  // private templateRefs = viewChildren(TemplateRef);
 
   onFilterChange(filters: any) {
+    // this.store.updateCardFilter(filters[0].value);
 
+    filters.forEach((filter: any) => {
+      switch (filter.type) {
+        
+        case 'card filter':
+          this.store.updateCardFilter(filter.value);
+          break;
+      }
+    });
+    
   }
 }

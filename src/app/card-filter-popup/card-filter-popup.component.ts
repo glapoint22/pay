@@ -5,6 +5,7 @@ import { FormFieldComponent } from '../form-field/form-field.component';
 import { PopupCloseDirective } from '../popup-close/popup-close.directive';
 import { InputFieldDirective } from '../input-field/input-field.directive';
 import { POPUP_DATA } from '../types/popup-data';
+import { TransactionsStore } from '../stores/transactions.store';
 
 @Component({
   selector: 'card-filter-popup',
@@ -20,8 +21,9 @@ import { POPUP_DATA } from '../types/popup-data';
   styleUrl: './card-filter-popup.component.scss'
 })
 export class CardFilterPopupComponent { 
-  protected value!: string;
-  private data = inject(POPUP_DATA) as string;
+  protected value!: number;
+  private data = inject(POPUP_DATA) as number;
+  protected store = inject(TransactionsStore);
 
   public ngOnInit(): void {
     this.value = this.data;

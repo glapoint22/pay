@@ -1,4 +1,4 @@
-import { Component, inject, viewChild } from '@angular/core';
+import { Component, inject, output, viewChild } from '@angular/core';
 import { FilterComponent } from '../filter/filter.component';
 import { FiltersGroupComponent } from '../filters-group/filters-group.component';
 
@@ -11,8 +11,9 @@ import { FiltersGroupComponent } from '../filters-group/filters-group.component'
 })
 export class MultiFilterComponent {
   private filter = viewChild(FilterComponent);
-  private filterGroup = inject(FiltersGroupComponent);
+  // private filterGroup = inject(FiltersGroupComponent);
   private multiFilterData: any[] = [];
+  public onUpdate = output<any[]>();
 
   protected async onClick(): Promise<void> {
     const { MultiFilterPopupComponent } = await import('../multi-filter-popup/multi-filter-popup.component');
@@ -22,6 +23,8 @@ export class MultiFilterComponent {
 
   protected onChange(multiFilterData: any[]): void {
     this.multiFilterData = multiFilterData;
-    // this.filterGroup?.setMultiFilters(multiFilterData);
+    this.onUpdate.emit(multiFilterData);
   }
+
+  
 }
